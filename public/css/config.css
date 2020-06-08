@@ -1,0 +1,100 @@
+body{
+    background-color: rgb(199, 216, 230);
+}
+.jumbotron{
+    height: 80px;
+    padding-top: 15px;
+    border: black;
+    background-color:  rgb(32, 85, 131);
+}
+.mainhead{
+    margin-left: 140px;
+    font-size: 45px;
+    color: black;
+    font-family: 'Piedra', cursive;
+}
+.logo{
+    width: 220px;
+    height: 55px;
+    margin-left: 50px;
+}
+.hicon{
+    margin-top: 10px;
+    margin-left: 200px;
+    color: black;
+}
+.seticon{
+    margin-top: 10px;
+    margin-left: 30px;
+    color: black;
+}
+.c1{
+    margin-top: 10px;
+    width: 92%;
+    height:310px;
+    margin-left: 50px;
+    border-radius: 3%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+    overflow-y: scroll;
+}
+.adbt{
+    margin-left: 30px;
+    width: 30px;
+    height: 23px;
+    
+}
+.edicon{
+    color: rgb(3, 173, 74);
+}
+th, td {
+    padding: 11px
+}
+.c2{
+    margin-top: 10px;
+    width: 400px;
+    height:280px;
+    margin-left: 40px;
+    border-radius: 3%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+    
+}
+.frebt{
+    margin-left: 10px;
+    height: 30px;
+    padding-top: 1px;
+}
+.head2{
+    margin-left: 15px;
+}
+.c3{
+    margin-top: 10px;
+    width: 400px;
+    height:280px;
+    margin-left: 40px;
+    border-radius: 3%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+    
+}
+.c4{
+    margin-top: 10px;
+    width: 550px;
+    height:280px;
+    margin-left: 40px;
+    border-radius: 3%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+    overflow-y: scroll;
+}
+ .alert{
+     margin: 2rem 0px;
+     position: relative;
+     top: 15%;
+     left: 15%;
+     width: 70%;
+ }
+  .c2{
+     height: auto;
+ }

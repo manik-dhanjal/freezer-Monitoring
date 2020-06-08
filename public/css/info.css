@@ -1,0 +1,236 @@
+body{
+    background-color: rgb(199, 216, 230);
+}
+.jumbotron{
+    height: 80px;
+    padding-top: 15px;
+    border: black;
+    background-color:  rgb(32, 85, 131);
+}
+.mainhead{
+    margin-left: 140px;
+    font-size: 45px;
+    color: black;
+    font-family: 'Piedra', cursive;
+}
+.alert{
+    position: relative;
+    z-index: 10;
+    margin-top: 1rem;
+    width: 80%;
+ 
+    left: 10%;
+}
+.wrapper{
+    padding-top:10px ;
+}
+.c1{
+    margin-top: 10px;
+    width: 300px;
+    height:250px;
+    margin-left: 30px;
+    border-radius: 5%;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+.head1{
+    margin-left: 68px;
+    font-family: 'Bree Serif', serif;
+}
+#donutChart1{
+    height: 160px; max-width: 90%;margin-left: 5px;
+}
+.val{
+    margin-left:105px;
+}
+.c2{
+    margin-top: 10px;
+    width: 300px;
+    height:250px;
+    margin-left: 20px;
+    border-radius: 5%;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+#donutChart2{
+    height: 160px; max-width: 90%;margin-left: 5px;
+}
+.head2{
+    margin-left: 90px;
+    font-family: 'Bree Serif', serif;
+}
+.c3{
+    margin-top: 10px;
+    width: 540px;
+    height:250px;
+    margin-left: 20px;
+    border-radius: 5%;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+.head3{
+    margin-left: 140px;
+    font-family: 'Bree Serif', serif;
+}
+#areaChart1{
+    height:170px; max-width: 95%;
+}
+.c4{
+    margin-top: 22px;
+    width: 700px;
+    height:300px;
+    margin-left: 35px;
+    border-radius: 5%;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+.head4{
+    margin-left: 225px;
+    font-family: 'Bree Serif', serif;
+}
+#areaChart2{
+    height:210px; max-width: 95%;
+}
+.c5{
+    margin-top: 22px;
+    width: 740px;
+    height:300px;
+    margin-left: 35px;
+    border-radius: 5%;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+#stackedBarChart{
+    height:225; max-width: 95%;
+}
+.head5{
+    margin-left: 200px;
+    font-family: 'Bree Serif', serif;
+}
+.c6{
+    margin-top: 10px;
+    width: 300px;
+    height:250px;
+    margin-left: 20px;
+    border-radius: 5%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+    overflow-y: scroll;
+}
+.head6{
+    margin-left: 100px;
+    font-family: 'Bree Serif', serif;
+}
+.head7{
+    margin-left: 20px;
+    font-family: 'Bree Serif', serif;
+}
+.head8{
+    margin-left: 130px;
+    font-family: 'Bree Serif', serif;
+}
+.eve{
+    margin-left: 60px;
+}
+.dat{
+    margin-left: 10px;
+}
+.frebt{
+    margin-left: 40px;
+}
+.time{
+    margin-right: 20px;z-index: 2;height: 30px;margin-left: 40px;
+}
+.logo{
+    width: 220px;
+    height: 55px;
+    margin-left: 50px;
+}
+.hicon{
+    margin-top: 10px;
+    margin-left: 200px;
+    color: black;
+}
+.seticon{
+    margin-top: 10px;
+    margin-left: 30px;
+    color: black;
+}
+@media only screen and (max-width:768px){
+
+    .mainhead{
+        margin-left: 5px;
+        font-size: 23px;
+    }
+    .c1{
+        margin-left: 20px;
+        width: 92%;
+    }
+    .head1{
+        margin-left: 170px;
+    }
+    #donutChart1{
+        height: 130;
+        margin-left: 30px;
+    }
+    .val{
+        margin-left: 205px;
+    }
+    .c2{
+        width: 92%;
+    }
+    .head2{
+        margin-left: 170px;
+    }
+    #donutChart2{
+        height: 130;
+        margin-left: 30px;
+    }
+    .c3{
+        width: 480px;
+    }
+    .head3{
+        margin-left: 110px;
+    }
+    .time{
+        height: 30px;margin-left: 20px;
+    }
+    
+    .c6{
+        width: 480px;
+    }
+    .head6{
+        margin-left: 200px;
+    }
+    .head7{
+        margin-left: 60px;
+    }
+    .head8{
+        margin-left: 200px;
+    }
+    .dat{
+        margin-left: 60px;
+    }
+    .eve{
+        margin-left: 140px;
+    }
+    .c4{
+        width: 480px;
+        margin-left: 20px;
+    }
+    .head4{
+        margin-left: 100px;
+    }
+    .c5{
+        width: 480px;
+        margin-left: 20px;
+    }
+    .head5{
+        margin-left: 50px;
+    }
+    .logo{
+        width: 120px;
+        height: 35px;
+        margin-left: 12px;
+    }
+}

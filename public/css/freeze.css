@@ -1,0 +1,162 @@
+body{
+    background-color: rgb(199, 216, 230);
+}
+.jumbotron{
+    height: 80px;
+    padding-top: 15px;
+    border: black;
+    background-color:  rgb(32, 85, 131);
+}
+.mainhead{
+    margin-left: 140px;
+    font-size: 45px;
+    color: black;
+    font-family: 'Piedra', cursive;
+}
+.hicon{
+    margin-top: 10px;
+    margin-left: 200px;
+    color: black;
+}
+.seticon{
+    margin-top: 10px;
+    margin-left: 30px;
+    color: black;
+}
+.logo{
+    width: 220px;
+    height: 55px;
+    margin-left: 50px;
+}
+.c1{
+    
+    height: 140px;
+     width: auto;
+    border-color: darkslateblue;
+    background-color: rgb(21, 103, 196);
+    box-sizing: border-box;
+	box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+	
+}
+.card-title1{
+    margin-left: 10px;
+    font-size: 35px;
+    font-family: 'Acme', sans-serif;
+    color: aliceblue;
+    
+}
+
+.title2{
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size:130%;
+    color: aliceblue;
+}
+.body2{
+    margin-bottom: 20px;
+    margin-left: 25px;
+    font-size:300%;
+    padding-bottom: 40px;
+    color: rgb(13, 233, 60)
+}
+.adbt{
+    position: absolute;
+    right: 5%;;
+    background-color: coral;
+    box-shadow: inset 0 0 5px 5px rgba(119, 44, 25, 0.5);
+}
+.fa-snowflake-o{
+    margin-left: 100px;
+    color: rgb(13, 6, 109);
+}
+.fa-thermometer-half{
+    color: rgb(82, 4, 4);
+    margin-left: 5px;
+    margin-top: 25px;
+}
+
+#opt{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.row-card{
+    width: 80%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.outer-card{
+    margin:40px
+}
+
+.fa-snowflake-o{
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width:1060px){
+
+    .row-card{
+        width: 70%;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .mainhead{
+        margin-left: 30px;
+        font-size: 38px;
+    }
+    .logo{
+        width: 160px;
+        height: 50px;
+        margin-left: 12px;
+        
+    }
+}
+
+@media only screen and (max-width:768px){
+    .mainhead{
+        margin-left: 5px;
+        font-size: 23px;
+    }
+    .card-title1{
+        font-size: 1.9rem;
+    }
+    .title2{
+        font-size: 1.2rem;
+    }
+
+    .row .fa-snowflake-o{
+        font-size: 2.9rem;
+    }
+    .body2{
+        margin-left: 20px;
+        padding-top:3.5px ;
+        font-size: 2.6rem;
+    }
+    
+    .logo{
+        width: 120px;
+        height: 35px;
+        margin-left: 12px;
+    }
+
+    .row-card{
+        width: 90%;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 1fr;
+       
+    }
+    
+}
+.alert{
+    z-index: -1;
+    position: relative;
+    top:15%;
+    width:74%;
+    left: 13%;
+}

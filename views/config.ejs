@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <title>
+            Freezer Monitor
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Piedra&family=Bree+Serif&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/config.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+    </head>
+    <body>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">EDIT FREEZER</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form id="custom-form1"  id="unique" action="/" method="post" >
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Freezer Name</label>
+                            <input type="text" class="form-control" id="recipient-name" name="freezer_name" vlaue="">
+                          </div>
+                    
+                        </form>
+     
+                  </div>
+                  <div class="modal-footer"> 
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit"  form="custom-form1" class="btn btn-success">Save</button>
+                  </div>
+               
+                </div>
+              </div>
+            </div>
+           
+        <div class="jumbotron jumbotron-fluid">
+          <div class="row">
+            <img class="logo" src="/assets/logo.png">
+            <h1 class="mainhead">Freezer Temperature Monitoring System</h1>
+           <a href="/"><i class="fa fa-2x fa-home hicon" aria-hidden="true"></i></a> 
+           <a href="/config"><i class="fa fa-2x fa-cog seticon" aria-hidden="true"></i></a> 
+          </div>
+      </div>
+      <div class="wrapper">
+          <div class="row">
+
+        
+        <%  if(error&&error.length>0){%>
+            <div class="alert alert-danger" role="alert">
+           <%=error%>
+            </div>
+         <% }%>
+           
+        <%  if(success&&success.length>0){%>
+          <div class="alert alert-Success" role="alert">
+         <%=success%>
+          </div>
+       <% }%>
+
+            <div class="card c1">
+                <div class="card-body">
+                    <h5 style="margin-left:43%;height: 18px;font-family: 'Bree Serif', serif;font-size: 27px;color:rgb(83, 13, 148);">Config Freezers</h5>
+                    
+                    <table style="width:100%">
+                        <tr>
+                          <th>Freezer Name</th>
+                          <th>Freezer ID</th>
+                          <th>Modified Date</th>
+                          <th style="width: 20px;">Operations</th>
+                        </tr>
+
+                      <%freezeData.forEach((freezer)=>{ var time=freezer.update_time%>
+                        <tr>
+            <!--freezer name-->              <td class="freezer_name"><%=freezer.freezer_name%></td>
+      <!--freezer id-->   <td class="freezer_id"><%=freezer.freezer_id%></td>
+  <!--update date-->      <td> <%=time.getDate()%> - <%=time.getMonth()+1%> - <%=time.getFullYear()%> </td>              
+                          <td class="edit"><a type="icon" class="adbt freezerid" data-toggle="modal" data-target="#exampleModalCenter"   data-id="<%=freezer.freezer_id%>">
+                            <i class="fa fa-pencil-square-o edicon" aria-hidden="true"></i>
+                          </a>
+                          
+                          </td>
+                        </tr>
+                      <%})%>
+
+                      </table>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card c2">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 style="margin-left:32%;height: 18px;font-family: 'Bree Serif', serif;font-size: 20px;color:rgb(83, 13, 148);">Config Alarms</h5>
+                    </div>
+                    
+       <!--form start-->        <form method="post" class="custom-form2" id="my-form" action="/config/alert/<%=freezeData[0].freezer_id%>">
+                            <div class="row" style="margin-top: 20px;">
+                        <h6 class="head2">Choose Freezer</h6>
+                        <div class="dropdown">
+                            <button name="freezer" class="btn btn-secondary dropdown-toggle frebt specialDrop" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <%=freezeData[0].freezer_name%>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <%freezeData.forEach((freezer)=>{ %>
+                              <a class="dropdown-item alarm-drop" value="<%=freezer.freezer_id%>"><%=freezer.freezer_name%></a>
+                              <%})%>
+                              
+                            </div>
+                          </div>
+                        </div>
+                       
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Alarm Temperature</label>
+                            <input type="text" class="form-control" id="recipient-name" name="temp" required>
+                          
+                        
+                            <label for="recipient-name" class="col-form-label">Email(To)</label>
+                            <input type="text" class="form-control" id="recipient-name" name="emailTo" required>
+                          </div>
+                          <div class="footer">
+                               <button type="submit" form="my-form" class="btn btn-success">SET</button>
+                          </div>
+      <!--form end-->                  </form>
+                    
+                </div>
+            </div>
+            <div class="card c3">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 style="margin-left:32%;height: 18px;font-family: 'Bree Serif', serif;font-size: 20px;color:rgb(83, 13, 148);">Config Email</h5>
+                    </div>
+                    
+                        <form method="post" action="/config/email/add">
+                            <div class="row">
+                            <div class="col">
+                                <label for="recipient-name" class="col-form-label">From</label>
+                                <input type="email" class="form-control" id="recipient-name" name="from">
+                              </div>
+                              <div class="col">
+                                <label for="recipient-name" class="col-form-label">To</label>
+                                <input type="email" class="form-control" id="recipient-name" name="to" >
+                              </div>
+                            </div>
+                            <div class="row">
+                                <label for="recipient-name" class="col-form-label">Message</label>
+                                <textarea type="text" class="form-control" id="recipient-name" name="message"></textarea>
+                              </div>
+                              <div class="footer">
+                                <button style="margin-top: 10px;margin-left:80% ;" type="submit" class="btn btn-success">Send</button>
+                           </div>
+                        </form>
+                    
+                </div>
+            </div>
+            <div class="card c4">
+                <div class="card-body">
+                    <div class="row">
+                        <table style="width:100%">
+
+                            <tr>
+                              <th>Freezer Name</th>
+                              <th>Alert Temperature</th>
+                              <th>Email(To)</th>
+                            </tr>
+                       
+                            <%tempAlert.forEach((alert)=>{%>
+                              <tr>
+                                <td><%=alert.freezer_name%></td>
+                                <td><%=alert.alert_temperature%> C</td>
+                                <td><%=alert.email_to%></td>
+                              </tr>
+                              <%})%>
+                           
+                          </table>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script>
+      
+
+   $(document).ready( async  function () {
+      $(".freezerid").click(function(){
+
+         $("#custom-form1").attr("action",`freezer_name/update/${$(this).attr("data-id")}`)
+         
+          });
+        
+        
+        })
+  
+        $(".alarm-drop").click(function(){
+          console.log($(this).html());
+          var dropValue=$(this).attr("value");
+          console.log(dropValue)
+       var dropItem=$(this).html();
+       $(".specialDrop").html(dropItem);
+       $(".custom-form2").attr("action",`config/alert/${dropValue}`);
+         
+        })
+
+   // code here
+
+      </script>
+    </body>
+</html>
