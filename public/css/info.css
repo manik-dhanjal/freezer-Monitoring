@@ -240,6 +240,9 @@ body {
     height: 35px;
     margin-left: 12px;
   }
+  canvas {
+    width: 95%;
+  }
 }
 .hicon {
   margin: 0px;
@@ -261,7 +264,4 @@ body {
 .nav span {
   display: static;
   margin-right: 20px;
-}
-canvas {
-  width: 95%;
 }

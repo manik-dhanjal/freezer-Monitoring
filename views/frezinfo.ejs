@@ -202,20 +202,20 @@
         }
       ]
     }
-    var donutOptions1     = {
+    var donutOptions1     =
+    {
       maintainAspectRatio : false,
       responsive : true,
       rotation: 2/3* Math.PI,/** This is where you need to work out where 89% is */
-            circumference: 5/3 * Math.PI,
-            
-   scales:{
-    beginAtZero: true
-   }
-      
+      circumference: 5/3 * Math.PI,
+      legend:{
+        display:false
+      }
     }
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    var donutChart1 = new Chart(donutChartCanvas1, {
+    var donutChart1 = new Chart(donutChartCanvas1,
+    {
       type: 'doughnut',
       data: donutData1,
       options: donutOptions1      
@@ -244,17 +244,12 @@
       maintainAspectRatio : false,
       responsive : true,
       rotation: 2/3 * Math.PI,/** This is where you need to work out where 89% is */
-            circumference: 5/3 * Math.PI,
- 
-      
-            scales:{
-    beginAtZero: true
-   }
-      
+      circumference: 5/3 * Math.PI, 
     }
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    var donutChart2 = new Chart(donutChartCanvas2, {
+    var donutChart2 = new Chart(donutChartCanvas2, 
+    {
       type: 'doughnut',
       data: donutData2,
       options: donutOptions2      
@@ -284,7 +279,8 @@
      console.log(newlabel[0])
     
 
-var areaChartData1 = {
+var areaChartData1 =
+{
   labels  : newlabel[1], //time data in current chart
   datasets: [
     {
@@ -447,7 +443,9 @@ var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
           
         }],
         yAxes: [{
-          
+          ticks: {
+                    beginAtZero: true
+                }
         }]
       }
     }
