@@ -194,22 +194,34 @@
       nowtemperature[0]=0;
     }
           var donutData1        = {
-      labels: ['temperature'],
+      labels: ['temperature',""],
       datasets: [
         {   
           data: [nowtemperature,100-nowtemperature], //dough nut chart value
           backgroundColor : ['#FF0000'],
+          hoverBackgroundColor: [
+          '#FF0000'
+      ],
+      hoverBorderColor: [
+      '#FF0000'
+      ]
         }
       ]
     }
     var donutOptions1     =
     {
-      maintainAspectRatio : false,
+     
       responsive : true,
       rotation: 2/3* Math.PI,/** This is where you need to work out where 89% is */
       circumference: 5/3 * Math.PI,
       legend:{
         display:false
+      },
+      tooltips:{
+        filter: function(item, data) {
+        var label = donutData1.labels[item.donutData1 ];
+        if (label) return item;
+      }
       }
     }
     //Create pie or douhnut chart
@@ -220,6 +232,32 @@
       data: donutData1,
       options: donutOptions1      
     })
+
+
+    
+// textCenter(nowtemperature);
+
+// function textCenter(val) {
+//   Chart.pluginService.register({
+//     beforeDraw: function(chart) {
+//       var width = chart.chart.width,
+//           height = chart.chart.height,
+//           ctx = chart.chart.ctx;
+
+//       ctx.restore();
+//       var fontSize = (height / 114).toFixed(2);
+//       ctx.font = fontSize + "em sans-serif";
+//       ctx.textBaseline = "middle";
+
+//       var text = val+"C",
+//           textX = Math.round((width - ctx.measureText(text).width) / 2),
+//           textY = height / 2;
+
+//       ctx.fillText(text, textX, textY);
+//       ctx.save();
+//     }
+//   });
+// }
         
     var nowCurrent=[<%=freezer.current%>]
     
