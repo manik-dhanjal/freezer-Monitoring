@@ -186,14 +186,18 @@
       <script>
             $(function () {
           var donutChartCanvas1 = $('#donutChart1').get(0).getContext('2d')
-    var donutData1        = {
-      
-       
-     
-
+   
+          var nowtemperature=[<%=freezer.temperature%>];
+    
+    if(!nowtemperature[0])
+    {
+      nowtemperature[0]=0;
+    }
+          var donutData1        = {
+      labels: ['temperature'],
       datasets: [
-        {  
-          data: [<%=freezer.temperature%>,<%=100-freezer.temperature%>], //dough nut chart value
+        {   
+          data: [nowtemperature,100-nowtemperature], //dough nut chart value
           backgroundColor : ['#FF0000'],
         }
       ]
@@ -204,7 +208,9 @@
       rotation: 2/3* Math.PI,/** This is where you need to work out where 89% is */
             circumference: 5/3 * Math.PI,
             
-      
+   scales:{
+    beginAtZero: true
+   }
       
     }
     //Create pie or douhnut chart
@@ -214,12 +220,22 @@
       data: donutData1,
       options: donutOptions1      
     })
+        
+    var nowCurrent=[<%=freezer.current%>]
+    
+    if(!nowCurrent)
+    {
+      nowCurrent=0;
+    }
+
     var donutChartCanvas2 = $('#donutChart2').get(0).getContext('2d')
     var donutData2        = {
-      
+      labels : ["current","max"],
+
       datasets: [
-        {
-          data: [<%=freezer.current%>,100-<%=freezer.current%>],
+       
+        { label               : 'Current',
+          data: [nowCurrent,100-nowCurrent],
           backgroundColor : ['#00FFFF'],
         }
       ]
@@ -229,8 +245,11 @@
       responsive : true,
       rotation: 2/3 * Math.PI,/** This is where you need to work out where 89% is */
             circumference: 5/3 * Math.PI,
-            
+ 
       
+            scales:{
+    beginAtZero: true
+   }
       
     }
     //Create pie or douhnut chart
@@ -296,6 +315,7 @@ var areaChartOptions1 = {
         display : false,
       },
       ticks: {
+      
      min: Math.min.apply(0),
      max: Math.max.apply(100)
   }
@@ -306,7 +326,8 @@ var areaChartOptions1 = {
         display : false,
       },
       ticks : {
-        
+        beginAtZero: true,
+                
         callback : function(value, index, values) {
                             return value + ' A';
                     }
@@ -367,6 +388,10 @@ var areaChartOptions2 = {
         display : false,
       },
       ticks : {
+         
+        
+                    beginAtZero: true,
+                
         
         callback : function(value, index, values) {
                             return value + ' C';
