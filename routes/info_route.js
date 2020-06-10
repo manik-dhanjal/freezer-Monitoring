@@ -206,7 +206,7 @@ router.get("/freezeinfo/:id/:temp/:current/:t_vs_c", async (req, res) => {
       );
     }
 
-    var arr;
+    var arr = "freezer";
     result_live.forEach((freezer) => {
       if (freezer.freezer_id == id) {
         arr = freezer;
@@ -234,15 +234,17 @@ router.get("/freezeinfo/:id/:temp/:current/:t_vs_c", async (req, res) => {
           req.flash("error", "Error while Freezer's name from Database !!!");
         }
 
-        res.render("frezinfo.ejs", {
-          freezer: arr,
-          allFreezer: result_data,
-          label: label,
-          chartData1: chartData,
-          link: liveAbout,
-          alert: alert,
-          error: req.flash("error"),
-        });
+        if (arr) {
+          res.render("frezinfo.ejs", {
+            freezer: arr,
+            allFreezer: result_data,
+            label: label,
+            chartData1: chartData,
+            link: liveAbout,
+            alert: alert,
+            error: req.flash("error"),
+          });
+        }
       });
     });
   });

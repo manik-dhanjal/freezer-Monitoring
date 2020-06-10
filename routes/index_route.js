@@ -37,6 +37,7 @@ router.post("/freezer/add", (req, res) => {
   let newFreezer = {
     freezer_id: req.body.freezerId,
     freezer_name: req.body.freezerName,
+    client_id:""
   };
 
   let sql = "INSERT INTO freezer_data SET?";
@@ -47,20 +48,8 @@ router.post("/freezer/add", (req, res) => {
       req.flash("error", "please select unique freezer id");
       res.redirect("/");
     } else {
-      db.query(
-        "INSERT INTO live_records SET?",
-        { freezer_id: req.body.freezerId },
-        (err, liveResult) => {
-          if (err) {
-            console.log(err);
-            req.flash("error", "please select unique freezer id");
-            res.redirect("/");
-          } else {
-            req.flash("success", "Freezer is saved");
-            res.redirect("/");
-          }
-        }
-      );
+      req.flash("success", "Freezer is saved");
+      res.redirect("/");
     }
   });
 });

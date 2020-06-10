@@ -1,17 +1,35 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
 body {
   background-color: rgb(199, 216, 230);
+}
+.unit1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-left: 6px;
+}
+.frezer-select {
+  width: 100%;
+  margin-top: 2rem;
+  padding-left: 5%;
+}
+.frezer-select button {
+  margin: 0px;
 }
 .jumbotron {
   height: 80px;
   padding-top: 0px;
   border: black;
+  width: 100%;
   background-color: rgb(32, 85, 131);
 }
 .mainhead {
-  margin-left: 140px;
   font-size: 45px;
   color: black;
   font-family: "Piedra", cursive;
+  text-align: center;
 }
 .alert {
   position: relative;
@@ -21,120 +39,163 @@ body {
 
   left: 10%;
 }
-.wrapper {
+
+.wrapper1 .charts {
   padding-top: 10px;
+  width: 100%;
+}
+.meter {
+  width: 90%;
 }
 .c1 {
   margin-top: 10px;
-  width: 300px;
-  height: 250px;
-  margin-left: 30px;
+  width: 36%;
+  height: auto;
   border-radius: 5%;
   box-sizing: border-box;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
 }
+.c1 .card-body {
+  height: auto;
+}
 .head1 {
-  margin-left: 68px;
+  display: block;
+  text-align: center;
   font-family: "Bree Serif", serif;
 }
 #donutChart1 {
-  height: 160px;
-  max-width: 90%;
-  margin-left: 5px;
+  max-width: 100%;
 }
 .val {
-  margin-left: 105px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 .c2 {
   margin-top: 10px;
-  width: 300px;
-  height: 250px;
-  margin-left: 20px;
+  width: 36%;
+  height: auto;
   border-radius: 5%;
   box-sizing: border-box;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
 }
 #donutChart2 {
-  height: 160px;
-  max-width: 90%;
-  margin-left: 5px;
+  max-width: 100%;
 }
 .head2 {
-  margin-left: 90px;
+  display: block;
+  text-align: center;
   font-family: "Bree Serif", serif;
 }
+#donutChart2 {
+  max-width: 100%;
+}
+
+.sec2 {
+  width: 90%;
+  margin: 5% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.sep-temp-cur {
+  flex: 2;
+  margin-right: 4rem;
+}
 .c3 {
-  margin-top: 10px;
-  width: 540px;
-  height: 250px;
-  margin-left: 20px;
+  width: 100%;
+  height: auto;
   border-radius: 5%;
   box-sizing: border-box;
+  padding: ;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
 }
 .head3 {
-  margin-left: 140px;
+  display: block;
+  text-align: center;
   font-family: "Bree Serif", serif;
 }
+
 #areaChart1 {
-  height: 170px;
+  margin-top: 1rem;
+  height: 250px;
   max-width: 95%;
 }
+
 .c4 {
-  margin-top: 22px;
-  width: 700px;
-  height: 300px;
-  margin-left: 35px;
+  width: 100%;
+  height: auto;
+  margin-top: 3rem;
   border-radius: 5%;
   box-sizing: border-box;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
 }
 .head4 {
-  margin-left: 225px;
+  display: block;
+  text-align: center;
   font-family: "Bree Serif", serif;
 }
 #areaChart2 {
-  height: 210px;
-  max-width: 95%;
-}
-.c5 {
-  margin-top: 22px;
-  width: 740px;
-  height: 300px;
-  margin-left: 35px;
-  border-radius: 5%;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
-}
-#stackedBarChart {
-  height: 225;
-  max-width: 95%;
-}
-.head5 {
-  margin-left: 200px;
-  font-family: "Bree Serif", serif;
-}
-.c6 {
-  margin-top: 10px;
-  width: 300px;
+  margin-top: 1rem;
   height: 250px;
-  margin-left: 20px;
+  max-width: 95%;
+}
+
+.c6 {
+  height: 825px;
+  width: 36%;
   border-radius: 5%;
   box-sizing: border-box;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
   overflow-y: scroll;
 }
 .head6 {
-  margin-left: 100px;
+  display: block;
+  text-align: center;
   font-family: "Bree Serif", serif;
 }
+.area1,
+.area2 {
+  height: 250px;
+}
+
+.spec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 2rem;
+}
 .head7 {
-  margin-left: 20px;
+  display: inline;
   font-family: "Bree Serif", serif;
 }
 .head8 {
-  margin-left: 130px;
+  display: inline;
   font-family: "Bree Serif", serif;
+}
+.c5 {
+  margin-top: 22px;
+  width: 90%;
+  height: auto;
+  margin: 3rem auto;
+  border-radius: 5%;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+
+#stackedBarChart {
+  height: 225;
+  max-width: 95%;
+}
+.head5 {
+  display: block;
+  margin: 0px;
+  text-align: center;
+  font-family: "Bree Serif", serif;
+}
+
+.area3 {
+  height: 400px;
 }
 .eve {
   margin-left: 60px;
@@ -163,40 +224,88 @@ body {
   margin-left: 30px;
   color: black;
 }
+.meter {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding: 2rem 0px;
+  margin: 0px auto;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 @media only screen and (max-width: 768px) {
   .mainhead {
-    margin-left: 5px;
-    font-size: 23px;
+    font-size: 20px;
   }
-  .c1 {
-    margin-left: 20px;
-    width: 92%;
+  .wrapper,
+  .charts {
+    width: 100%;
+  }
+  .frezer-select button,
+  .frezer-select .dropdown-item {
+    font-size: 0.9rem;
+  }
+  .meter .card {
+    width: 38%;
   }
   .head1 {
-    margin-left: 170px;
+    margin-bottom: 0px;
+    font-size: 1.3rem;
   }
-  #donutChart1 {
-    height: 130;
-    margin-left: 30px;
+  .c1 hr {
+    margin: 0.7rem auto;
+    width: 80%;
   }
-  .val {
-    margin-left: 205px;
+  .c1 .card-body {
+    padding: 15px 5px 0px 5px;
   }
-  .c2 {
-    width: 92%;
+
+  .c2 .card-body {
+    padding: 15px 5px 0px 5px;
   }
   .head2 {
-    margin-left: 170px;
+    margin-bottom: 0px;
+    font-size: 1.3rem;
   }
-  #donutChart2 {
-    height: 130;
-    margin-left: 30px;
+  .c2 hr {
+    margin: 0.7rem auto;
+    width: 80%;
+  }
+  .val {
+    font-size: 1.3rem;
+  }
+  .unit1 {
+    font-size: 1.1rem;
+    padding-left: 3px;
+  }
+
+  .sec2 {
+    flex-direction: column;
+  }
+  .sep-temp-cur {
+    margin: 0px;
+    width: 100%;
   }
   .c3 {
-    width: 480px;
+    width: 100%;
+    height: auto;
   }
-  .head3 {
-    margin-left: 110px;
+  .c4 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  .area2,
+  .area1 {
+    height: 170px;
+  }
+
+  .c6 {
+    height: 50vh;
   }
   .time {
     height: 30px;
@@ -204,16 +313,10 @@ body {
   }
 
   .c6 {
-    width: 480px;
+    width: 100%;
   }
-  .head6 {
-    margin-left: 200px;
-  }
-  .head7 {
-    margin-left: 60px;
-  }
+
   .head8 {
-    margin-left: 200px;
   }
   .dat {
     margin-left: 60px;
@@ -221,29 +324,33 @@ body {
   .eve {
     margin-left: 140px;
   }
-  .c4 {
-    width: 480px;
-    margin-left: 20px;
-  }
+
   .head4 {
-    margin-left: 100px;
   }
   .c5 {
-    width: 480px;
-    margin-left: 20px;
+    margin-top: 1.2rem;
+    width: 90%;
   }
   .head5 {
-    margin-left: 50px;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+  .area3 {
+    height: 250px;
   }
   .logo {
     width: 120px;
     height: 35px;
     margin-left: 12px;
   }
-  canvas {
-    width: 95%;
+  .charts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
+
 .hicon {
   margin: 0px;
   margin-bottom: 10px;
