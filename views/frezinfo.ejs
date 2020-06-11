@@ -53,6 +53,7 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
+          data-freezerid=<%=freezer.freezer_id%>
         >
            
           <%allFreezer.forEach((showFreezer)=>{
@@ -310,316 +311,317 @@
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
+      <script src="/js/info.js"></script>
+      <script>
+      $(function () {
+    var donutChartCanvas1 = $('#donutChart1').get(0).getContext('2d')
 
-    <script>
-                  $(function () {
-                var donutChartCanvas1 = $('#donutChart1').get(0).getContext('2d')
+    var nowtemperature=[<%=freezer.temperature%>];
 
-                var nowtemperature=[<%=freezer.temperature%>];
+if(!nowtemperature[0])
+{
+nowtemperature[0]=0;
+}
 
-          if(!nowtemperature[0])
-          {
-            nowtemperature[0]=0;
-          }
+    var donutData1        = {
+labels: ["temperature",""],
+datasets: [
+  {
+    data: [nowtemperature,100-nowtemperature], //dough nut chart value
+    backgroundColor : ['#FF0000',"#DDDDDD"],
+    hoverBackgroundColor: [
+    '#FF0000','#DDDDDD'
+],
+hoverBorderColor: [
+'#FF0000','#ffffff'
+]
+  }
+]
+}
+var donutOptions1     =
+{
+responsive : true,
+legend:{
+  display:false
+},
+cutoutPercentage:55,
+rotation: 2/3* Math.PI,/** This is where you need to work out where 89% is */
+circumference: 5/3 * Math.PI,
 
-                var donutData1        = {
-            labels: ["temperature",""],
-            datasets: [
-              {
-                data: [nowtemperature,100-nowtemperature], //dough nut chart value
-                backgroundColor : ['#FF0000',"#DDDDDD"],
-                hoverBackgroundColor: [
-                '#FF0000','#DDDDDD'
-            ],
-            hoverBorderColor: [
-            '#FF0000','#ffffff'
-            ]
+tooltips:{
+  filter: function(item, data) {
+  var label = data.labels[item.index];
+  if (label) return item;
+}
+}
+}
+//Create pie or douhnut chart
+// You can switch between pie and douhnut using the method below.
+var donutChart1 = new Chart(donutChartCanvas1,
+{
+type: 'doughnut',
+data: donutData1,
+options: donutOptions1
+})
+
+
+
+var nowCurrent=[<%=freezer.current%>]
+
+if(!nowCurrent)
+{
+nowCurrent=0;
+}
+
+var donutChartCanvas2 = $('#donutChart2').get(0).getContext('2d')
+var donutData2        = {
+labels : ["current",""],
+
+datasets: [
+
+  {
+    data: [nowCurrent,100-nowCurrent],
+    backgroundColor : ['#00FFFF',"#DDDDDD"],
+    hoverBackgroundColor: [
+  "#00FFFF",
+  "#DDDDDD"
+],
+hoverBorderColor: [
+  "#00FFFF",
+  "#ffffff"
+]
+  }
+]
+}
+var donutOptions2     = {
+
+responsive : true,
+rotation: 2/3 * Math.PI,/** This is where you need to work out where 89% is */
+circumference: 5/3 * Math.PI,
+legend: {
+display: false
+},
+cutoutPercentage: 55,
+tooltips: {
+  filter: function(item, data) {
+  var label = data.labels[item.index];
+  if (label) return item;
+}
+}
+}
+//Create pie or douhnut chart
+// You can switch between pie and douhnut using the method below.
+var donutChart2 = new Chart(donutChartCanvas2,
+{
+type: 'doughnut',
+data: donutData2,
+options: donutOptions2
+})
+var areaChartCanvas1 = $('#areaChart1').get(0).getContext('2d')
+
+
+var label=[];
+label=<%-JSON.stringify(label);%>
+
+var chartC=[];
+chartC.push (<%= chartData1[1] %>);
+
+
+var newlabel=[];
+
+for(var i=0;i<3;i++)
+{newlabel[i]=[];
+
+ for(var j=0;j<label[i].length;j++)
+ {
+
+    newlabel[i][label[i].length-j-1]=label[i][j]
+ }
+
+}
+console.log(newlabel[0])
+
+
+var areaChartData1 =
+{
+labels  : newlabel[1], //time data in current chart
+datasets: [
+{
+
+backgroundColor     : 'rgba(60,141,188,0.9)',
+borderColor         : 'rgba(60,141,188,0.8)',
+pointRadius          : true,
+pointColor          : '#3b8bba',
+pointStrokeColor    : 'rgba(60,141,188,1)',
+pointHighlightFill  : '#fff',
+pointHighlightStroke: 'rgba(60,141,188,1)',
+data                : chartC,  //current at particular time
+fill                : false
+},
+
+]
+}
+
+var areaChartOptions1 = {
+maintainAspectRatio : false,
+responsive : true,
+legend: {
+display: false
+},
+scales: {
+xAxes: [{
+gridLines : {
+  display : false,
+},
+ticks: {
+
+min: Math.min.apply(0),
+max: Math.max.apply(100)
+}
+
+}],
+yAxes: [{
+gridLines : {
+  display : false,
+},
+ticks : {
+  beginAtZero: true,
+
+  callback : function(value, index, values) {
+                      return value + ' A';
               }
-            ]
-          }
-          var donutOptions1     =
-          {
-            responsive : true,
-            legend:{
-              display:false
-            },
-            cutoutPercentage:55,
-            rotation: 2/3* Math.PI,/** This is where you need to work out where 89% is */
-            circumference: 5/3 * Math.PI,
+}
+}]
+}
+}
 
-            tooltips:{
-              filter: function(item, data) {
-              var label = data.labels[item.index];
-              if (label) return item;
-            }
-            }
-          }
-          //Create pie or douhnut chart
-          // You can switch between pie and douhnut using the method below.
-          var donutChart1 = new Chart(donutChartCanvas1,
-          {
-            type: 'doughnut',
-            data: donutData1,
-            options: donutOptions1
-          })
+// This will get the first returned node in the jQuery collection.
+var areaChart1       = new Chart(areaChartCanvas1, {
+type: 'line',
+data: areaChartData1,
+options: areaChartOptions1
+})
+var areaChartCanvas2 = $('#areaChart2').get(0).getContext('2d')
+var temp =[];
+temp.push(<%=chartData1[0]%>);
+var areaChartData2 = {
+labels  :newlabel[0], // temperature time axis
+datasets: [
+{
 
+backgroundColor     : 'rgba(60,141,188,0.9)',
+borderColor         : 'rgba(60,141,188,0.8)',
+pointRadius          : true,
+pointColor          : '#FF6347',
+pointStrokeColor    : 'rgba(60,141,188,1)',
+pointHighlightFill  : '#fff',
+pointHighlightStroke: 'rgba(60,141,188,1)',
+data                : temp,  // temperature value at perticular time
+fill                : false
+},
 
+]
+}
 
-          var nowCurrent=[<%=freezer.current%>]
+console.log(temp);
 
-          if(!nowCurrent)
-          {
-            nowCurrent=0;
-          }
+var areaChartOptions2 = {
+maintainAspectRatio : false,
+responsive : true,
+legend: {
+display: false
+},
+scales: {
+xAxes: [{
+gridLines : {
+  display : false,
+},
+ticks: {
+min: Math.min.apply(0),
+max: Math.max.apply(100)
+}
 
-          var donutChartCanvas2 = $('#donutChart2').get(0).getContext('2d')
-          var donutData2        = {
-            labels : ["current",""],
-
-            datasets: [
-
-              {
-                data: [nowCurrent,100-nowCurrent],
-                backgroundColor : ['#00FFFF',"#DDDDDD"],
-                hoverBackgroundColor: [
-              "#00FFFF",
-              "#DDDDDD"
-            ],
-            hoverBorderColor: [
-              "#00FFFF",
-              "#ffffff"
-            ]
-              }
-            ]
-          }
-          var donutOptions2     = {
-
-            responsive : true,
-            rotation: 2/3 * Math.PI,/** This is where you need to work out where 89% is */
-            circumference: 5/3 * Math.PI,
-            legend: {
-            display: false
-          },
-          cutoutPercentage: 55,
-          tooltips: {
-          	filter: function(item, data) {
-              var label = data.labels[item.index];
-              if (label) return item;
-            }
-          }
-          }
-          //Create pie or douhnut chart
-          // You can switch between pie and douhnut using the method below.
-          var donutChart2 = new Chart(donutChartCanvas2,
-          {
-            type: 'doughnut',
-            data: donutData2,
-            options: donutOptions2
-          })
-          var areaChartCanvas1 = $('#areaChart1').get(0).getContext('2d')
+}],
+yAxes: [{
+gridLines : {
+  display : false,
+},
+ticks : {
 
 
-           var label=[];
-          label=<%-JSON.stringify(label);%>
-
-          var chartC=[];
-           chartC.push (<%= chartData1[1] %>);
-
-
-           var newlabel=[];
-
-           for(var i=0;i<3;i++)
-           {newlabel[i]=[];
-
-             for(var j=0;j<label[i].length;j++)
-             {
-
-                newlabel[i][label[i].length-j-1]=label[i][j]
-             }
-
-           }
-           console.log(newlabel[0])
-
-
-      var areaChartData1 =
-      {
-        labels  : newlabel[1], //time data in current chart
-        datasets: [
-          {
-
-            backgroundColor     : 'rgba(60,141,188,0.9)',
-            borderColor         : 'rgba(60,141,188,0.8)',
-            pointRadius          : true,
-            pointColor          : '#3b8bba',
-            pointStrokeColor    : 'rgba(60,141,188,1)',
-            pointHighlightFill  : '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data                : chartC,  //current at particular time
-            fill                : false
-          },
-
-        ]
-      }
-
-      var areaChartOptions1 = {
-        maintainAspectRatio : false,
-        responsive : true,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            gridLines : {
-              display : false,
-            },
-            ticks: {
-
-           min: Math.min.apply(0),
-           max: Math.max.apply(100)
-        }
-
-          }],
-          yAxes: [{
-            gridLines : {
-              display : false,
-            },
-            ticks : {
               beginAtZero: true,
 
-              callback : function(value, index, values) {
-                                  return value + ' A';
-                          }
-            }
-          }]
-        }
-      }
 
-      // This will get the first returned node in the jQuery collection.
-      var areaChart1       = new Chart(areaChartCanvas1, {
-        type: 'line',
-        data: areaChartData1,
-        options: areaChartOptions1
-      })
-      var areaChartCanvas2 = $('#areaChart2').get(0).getContext('2d')
-      var temp =[];
-      temp.push(<%=chartData1[0]%>);
-      var areaChartData2 = {
-        labels  :newlabel[0], // temperature time axis
-        datasets: [
-          {
-
-            backgroundColor     : 'rgba(60,141,188,0.9)',
-            borderColor         : 'rgba(60,141,188,0.8)',
-            pointRadius          : true,
-            pointColor          : '#FF6347',
-            pointStrokeColor    : 'rgba(60,141,188,1)',
-            pointHighlightFill  : '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data                : temp,  // temperature value at perticular time
-            fill                : false
-          },
-
-        ]
-      }
-
-      console.log(temp);
-
-      var areaChartOptions2 = {
-        maintainAspectRatio : false,
-        responsive : true,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            gridLines : {
-              display : false,
-            },
-            ticks: {
-           min: Math.min.apply(0),
-           max: Math.max.apply(100)
-        }
-
-          }],
-          yAxes: [{
-            gridLines : {
-              display : false,
-            },
-            ticks : {
-
-
-                          beginAtZero: true,
-
-
-              callback : function(value, index, values) {
-                                  return value + ' C';
-                          }
-            }
-          }]
-        }
-      }
-
-      // This will get the first returned node in the jQuery collection.
-      var areaChart2       = new Chart(areaChartCanvas2, {
-        type: 'line',
-        data: areaChartData2,
-        options: areaChartOptions2
-      })
-
-      console.log(newlabel[2]);
-      var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-          var stackedBarChartData =  {
-            labels  : newlabel[2],  // temp vs current graph time axis
-            datasets: [
-              {
-                label               : 'Avg.current',
-                backgroundColor     : 'rgba(60,141,188,0.9)',
-                borderColor         : 'rgba(60,141,188,0.8)',
-                pointRadius          : false,
-                pointColor          : '#3b8bba',
-                pointStrokeColor    : 'rgba(60,141,188,1)',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(60,141,188,1)',
-                data                :<%-JSON.stringify(chartData1[3])%>,   //current bar value blue color
-              },
-              {
-                label               : 'Temperature',
-                backgroundColor     : '#FF0000',
-                borderColor         : 'rgba(210, 214, 222, 1)',
-                pointRadius         : false,
-                pointColor          : 'rgba(210, 214, 222, 1)',
-                pointStrokeColor    : '#c1c7d1',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data                : <%-JSON.stringify(chartData1[2])%>,   // temp current value  red color
+  callback : function(value, index, values) {
+                      return value + ' C';
               }
-            ]
+}
+}]
+}
+}
+
+// This will get the first returned node in the jQuery collection.
+var areaChart2       = new Chart(areaChartCanvas2, {
+type: 'line',
+data: areaChartData2,
+options: areaChartOptions2
+})
+
+console.log(newlabel[2]);
+var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+var stackedBarChartData =  {
+labels  : newlabel[2],  // temp vs current graph time axis
+datasets: [
+  {
+    label               : 'Avg.current',
+    backgroundColor     : 'rgba(60,141,188,0.9)',
+    borderColor         : 'rgba(60,141,188,0.8)',
+    pointRadius          : false,
+    pointColor          : '#3b8bba',
+    pointStrokeColor    : 'rgba(60,141,188,1)',
+    pointHighlightFill  : '#fff',
+    pointHighlightStroke: 'rgba(60,141,188,1)',
+    data                :<%-JSON.stringify(chartData1[3])%>,   //current bar value blue color
+  },
+  {
+    label               : 'Temperature',
+    backgroundColor     : '#FF0000',
+    borderColor         : 'rgba(210, 214, 222, 1)',
+    pointRadius         : false,
+    pointColor          : 'rgba(210, 214, 222, 1)',
+    pointStrokeColor    : '#c1c7d1',
+    pointHighlightFill  : '#fff',
+    pointHighlightStroke: 'rgba(220,220,220,1)',
+    data                : <%-JSON.stringify(chartData1[2])%>,   // temp current value  red color
+  }
+]
+}
+console.log(<%-JSON.stringify(chartData1[2])%>);
+
+var stackedBarChartOptions = {
+responsive              : true,
+maintainAspectRatio     : false,
+scales: {
+  xAxes: [{
+
+  }],
+  yAxes: [{
+    ticks: {
+              beginAtZero: true
           }
-          console.log(<%-JSON.stringify(chartData1[2])%>);
+  }]
+}
+}
 
-          var stackedBarChartOptions = {
-            responsive              : true,
-            maintainAspectRatio     : false,
-            scales: {
-              xAxes: [{
+var stackedBarChart = new Chart(stackedBarChartCanvas, {
+type: 'bar',
+data: stackedBarChartData,
+options: stackedBarChartOptions
+})
+})
 
-              }],
-              yAxes: [{
-                ticks: {
-                          beginAtZero: true
-                      }
-              }]
-            }
-          }
-
-          var stackedBarChart = new Chart(stackedBarChartCanvas, {
-            type: 'bar',
-            data: stackedBarChartData,
-            options: stackedBarChartOptions
-          })
-          })
-    </script>
+</script>
+ 
   </body>
 </html>

@@ -250,4 +250,14 @@ router.get("/freezeinfo/:id/:temp/:current/:t_vs_c", async (req, res) => {
   });
 });
 
+router.get("/info_temp/:id", (req, res) => {
+  console.log(`access success id:${req.params.id}`);
+  res.send([1, 2, 3, 4, 5]);
+});
+
+router.get("/info_current/:id", (req, res) => {
+  console.log(`access success id:${req.params.id}`);
+  res.send([1, 2, 3, 4, 5]);
+});
+
 module.exports = router;
