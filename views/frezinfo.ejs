@@ -1,627 +1,178 @@
 <html>
-  <head>
-    <title>
-      Freezer Monitor
-    </title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Acme&family=Piedra&family=Bree+Serif&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="/css/info.css" />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="jumbotron">
-      <div class="row nav">
-        <img class="logo" src="/assets/logo.png" />
-        <span>
-          <a href="/"
-            ><i class="fa fa-2x fa-home hicon" aria-hidden="true"></i
-          ></a>
-          <a href="/config"
-            ><i class="fa fa-2x fa-cog seticon" aria-hidden="true"></i
-          ></a>
-        </span>
+
+<head>
+  <title>
+    Freezer Monitor
+  </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Piedra&family=Bree+Serif&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/css/info.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="row nav">
+      <img class="logo" src="/assets/logo.png" />
+      <span>
+        <a href="/"><i class="fa fa-2x fa-home hicon" aria-hidden="true"></i></a>
+        <a href="/config"><i class="fa fa-2x fa-cog seticon" aria-hidden="true"></i></a>
+      </span>
+    </div>
+  </div>
+  <h1 class="mainhead">Freezer Temperature Monitoring System</h1>
+  <div class="wrapper1">
+    <% if(error&&error.length>0){%>
+    <div class="alert alert-danger" role="alert">
+      <%=error%>
+    </div>
+    <% }%>
+
+    <div class="dropdown frezer-select">
+      <button class="btn btn-secondary dropdown-toggle frebt" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-freezerid=<%=currentFreezer.freezer_id%>>
+      <%=currentFreezer.freezer_name%>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%allFreezer.forEach((dropFreezer)=>{%>
+        <a class="dropdown-item"
+          href="/freezeinfo/<%=dropFreezer.freezer_id%>"><%=dropFreezer.freezer_name%></a>
+        <%})%>
       </div>
     </div>
-    <h1 class="mainhead">Freezer Temperature Monitoring System</h1>
-    <div class="wrapper1">
-      <% if(error&&error.length>0){%>
-      <div class="alert alert-danger" role="alert">
-        <%=error%>
-      </div>
-      <% }%>
 
-      <div class="dropdown frezer-select">
-        <button
-          class="btn btn-secondary dropdown-toggle frebt"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          data-freezerid=<%=freezer.freezer_id%>
-        >
-           
-          <%allFreezer.forEach((showFreezer)=>{
-          if(showFreezer.freezer_id==freezer.freezer_id){%>
-          <%=showFreezer.freezer_name%> <%}})%>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <%allFreezer.forEach((dropFreezer)=>{%>
-          <a
-            class="dropdown-item"
-            href="/freezeinfo/<%=dropFreezer.freezer_id%>/10/10/10"
-            ><%=dropFreezer.freezer_name%></a
-          >
-          <%})%>
-        </div>
-      </div>
-
-      <div class="charts">
-        <div class="meter">
-          <div class="card c1">
-            <div class="card-body">
-              <h4 class="head1">Temperature</h4>
-              <hr />
-              <canvas id="donutChart1"></canvas>
-              <h3 class="val">
-                <%=freezer.temperature%><span class="unit1">&#8451;</span><!--temperature dohnut chart-->
-              </h3>
-            </div>
-          </div>
-
-          <div class="card c2">
-            <div class="card-body">
-              <h4 class="head2"> Current</h4>
-
-              <hr />
-              <canvas id="donutChart2"></canvas>
-              <h3 class="val">
-                <%=freezer.current%><span class="unit1">A<span><!--current doughnut chart-->
-              </h3>
-            </div>
-          </div>
-        </div>
-
-        <section class="sec2">
-          <div class="sep-temp-cur">
-            <div class="card c3">
-              <div class="card-body">
-                <h4 class="head3">Current Consumption</h4>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-sm btn-secondary dropdown-toggle time"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <%if(link[1]>=60){%> <%=link[1]/60%> hr <% }else{%>
-                    <%=link[1]%> min <%}%>
-                  </button>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/10/<%=link[2]%>"
-                      >10min</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/30/<%=link[2]%>"
-                      >30min</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/60/<%=link[2]%>"
-                      >1hr</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/360/<%=link[2]%>"
-                      >6hr</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/1440/<%=link[2]%>"
-                      >24hr</a
-                    >
-                  </div>
-                </div>
-                <hr />
-                <div class="area1">
-                  <canvas id="areaChart1"></canvas>
-                </div>
-              </div>
-            </div>
-
-            <div class="card c4">
-              <div class="card-body">
-                <h4 class="head4">Temperature Trend</h4>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-sm btn-secondary dropdown-toggle time"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <%if(link[0]>=60){%> <%=link[0]/60%> hr <% }else{%>
-                    <%=link[0]%> min <%}%>
-                  </button>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/10/<%=link[1]%>/<%=link[2]%>"
-                      >10min</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/30/<%=link[1]%>/<%=link[2]%>"
-                      >30min</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/60/<%=link[1]%>/<%=link[2]%>"
-                      >1hr</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/360/<%=link[1]%>/<%=link[2]%>"
-                      >6hr</a
-                    >
-                    <a
-                      class="dropdown-item"
-                      style="color: black;"
-                      href="/freezeinfo/<%=freezer.freezer_id%>/1440/<%=link[1]%>/<%=link[2]%>"
-                      >24hr</a
-                    >
-                  </div>
-                </div>
-                <hr />
-                <div class="area2">
-                  <canvas id="areaChart2"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card c6">
-            <div class="card-body">
-              <h4 class="head6">Alert</h4>
-              <hr />
-              <span class="spec-head">
-                <h6 class="head7">Date</h6>
-                <h6 class="head8">Events</h6>
-              </span>
-              <hr />
-              <%alert.forEach((alert_)=>{ var time= alert_.update_time%>
-              <div class="row1">
-                <p class="dat">
-                  <%=time.getDate()%>-<%=time.getMonth()+1%>-<%=time.getFullYear()%>
-                  <br />at <%=time.getHours()+1%>:<%=time.getMinutes()+1%> hrs
-                </p>
-                <p class="eve"><%=alert_.message%></p>
-              </div>
-              <%})%>
-            </div>
-          </div>
-        </section>
-
-        <div class="card c5">
+    <div class="charts">
+      <div class="meter">
+        <div class="card c1">
           <div class="card-body">
-            <h4 class="head5">Avg.Temperature vs Current</h4>
-            <div class="dropdown">
-              <button
-                class="btn btn-sm btn-secondary dropdown-toggle time"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <%if(link[2]>=60){%> <%=link[2]/60%> hr <% }else{%> <%=link[2]%>
-                min <%}%>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a
-                  class="dropdown-item"
-                  style="color: black;"
-                  href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/<%=link[1]%>/10"
-                  >10min</a
-                >
-                <a
-                  class="dropdown-item"
-                  style="color: black;"
-                  href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/<%=link[1]%>/30"
-                  >30min</a
-                >
-                <a
-                  class="dropdown-item"
-                  style="color: black;"
-                  href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/<%=link[1]%>/60"
-                  >1hr</a
-                >
-                <a
-                  class="dropdown-item"
-                  style="color: black;"
-                  href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/<%=link[1]%>/360"
-                  >6hr</a
-                >
-                <a
-                  class="dropdown-item"
-                  style="color: black;"
-                  href="/freezeinfo/<%=freezer.freezer_id%>/<%=link[0]%>/<%=link[1]%>/1440"
-                  >24hr</a
-                >
-              </div>
-            </div>
+            <h4 class="head1">Temperature</h4>
+            <hr />
+            <canvas id="donutChart1"></canvas>
+            <h3 class="val douTemp">
+
+            </h3>
+          </div>
+        </div>
+
+        <div class="card c2">
+          <div class="card-body">
+            <h4 class="head2"> Current</h4>
 
             <hr />
-            <div class="area3">
-              <canvas id="stackedBarChart"></canvas>
-            </div>
+            <canvas id="donutChart2"></canvas>
+            <h3 class="val douCurrent">
+
+            </h3>
           </div>
         </div>
       </div>
+
+      <section class="sec2">
+        <div class="sep-temp-cur">
+          <div class="card c3">
+            <div class="card-body">
+              <h4 class="head3">Current Consumption</h4>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-secondary dropdown-toggle time current" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      10 min
+                </button>
+                <div class="dropdown-menu current_drop" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" style="color: black;" data-time="10"    data-type="current"> 10 min </a>
+                  <a class="dropdown-item" style="color: black;" data-time="30"   data-type="current"> 30 min </a>
+                  <a class="dropdown-item" style="color: black;" data-time="60"    data-type="current"> 1 hr </a>
+                  <a class="dropdown-item" style="color: black;" data-time="360"   data-type="current"> 6 hr </a>
+                  <a class="dropdown-item" style="color: black;" data-time="1440"  data-type="current"> 24 hr </a>
+                </div>
+             </div>
+             <hr>
+             <div class="area1">
+              <canvas id="areaChart1"></canvas>
+             </div>
+           </div>
+         </div>
+
+        <div class="card c4">
+          <div class="card-body">
+            <h4 class="head4">Temperature Trend</h4>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-secondary dropdown-toggle time temperature" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                10 min
+              </button>
+                  <div class="dropdown-menu temp_drop" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" style="color: black;" data-time="10"    data-type="temperature">10 min</a>
+                    <a class="dropdown-item" style="color: black;" data-time="30"    data-type="temperature">30 min</a>
+                    <a class="dropdown-item" style="color: black;" data-time="60"    data-type="temperature">1 hr</a>
+                    <a class="dropdown-item" style="color: black;" data-time="360"   data-type="temperature">6 hr</a>
+                    <a class="dropdown-item" style="color: black;" data-time="1440"  data-type="temperature">24 hr</a>
+                  </div>
+             </div>
+          <hr>
+          <div class="area2">
+            <canvas id="areaChart2"></canvas>
+          </div>
+        </div>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"></script>
-      <script src="/js/info.js"></script>
-      <script>
-      $(function () {
-    var donutChartCanvas1 = $('#donutChart1').get(0).getContext('2d')
+  <div class="card c6">
+    <div class="card-body">
+      <h4 class="head6">Alert</h4>
+      <hr />
+      <span class="spec-head">
+        <h6 class="head7">Date</h6>
+        <h6 class="head8">Events</h6>
+      </span>
+      <hr />
+      <div class="alert_list">
 
-    var nowtemperature=[<%=freezer.temperature%>];
+      </div>
+    </div>
+  </div>
+  </section>
 
-if(!nowtemperature[0])
-{
-nowtemperature[0]=0;
-}
+  <div class="card c5">
+    <div class="card-body">
+      <h4 class="head5">Avg.Temperature vs Current</h4>
+      <div class="dropdown">
+          <button class="btn btn-sm btn-secondary dropdown-toggle time temp-cur" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              10 min 
+          </button>
+              <div class="dropdown-menu tempVScur_drop" aria-labelledby="dropdownMenuButton ">
+                <a class="dropdown-item" style="color: black;"  data-time="10"      data-type="temp-cur" >10 min</a>
+                <a class="dropdown-item" style="color: black;"  data-time="30"      data-type="temp-cur">30 min</a>
+                <a class="dropdown-item" style="color: black;"  data-time="60"      data-type="temp-cur">1 hr</a>
+                <a class="dropdown-item" style="color: black;"  data-time="360"     data-type="temp-cur">6 hr</a>
+                <a class="dropdown-item" style="color: black;"  data-time="1440"    data-type="temp-cur">24 hr</a>
+              </div>
+       </div>
+    <hr>
+    <div class="area3">
+      <canvas id="stackedBarChart"></canvas>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
 
-    var donutData1        = {
-labels: ["temperature",""],
-datasets: [
-  {
-    data: [nowtemperature,100-nowtemperature], //dough nut chart value
-    backgroundColor : ['#FF0000',"#DDDDDD"],
-    hoverBackgroundColor: [
-    '#FF0000','#DDDDDD'
-],
-hoverBorderColor: [
-'#FF0000','#ffffff'
-]
-  }
-]
-}
-var donutOptions1     =
-{
-responsive : true,
-legend:{
-  display:false
-},
-cutoutPercentage:55,
-rotation: 2/3* Math.PI,/** This is where you need to work out where 89% is */
-circumference: 5/3 * Math.PI,
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="/js/info.js"></script>
+  
+</body>
 
-tooltips:{
-  filter: function(item, data) {
-  var label = data.labels[item.index];
-  if (label) return item;
-}
-}
-}
-//Create pie or douhnut chart
-// You can switch between pie and douhnut using the method below.
-var donutChart1 = new Chart(donutChartCanvas1,
-{
-type: 'doughnut',
-data: donutData1,
-options: donutOptions1
-})
-
-
-
-var nowCurrent=[<%=freezer.current%>]
-
-if(!nowCurrent)
-{
-nowCurrent=0;
-}
-
-var donutChartCanvas2 = $('#donutChart2').get(0).getContext('2d')
-var donutData2        = {
-labels : ["current",""],
-
-datasets: [
-
-  {
-    data: [nowCurrent,100-nowCurrent],
-    backgroundColor : ['#00FFFF',"#DDDDDD"],
-    hoverBackgroundColor: [
-  "#00FFFF",
-  "#DDDDDD"
-],
-hoverBorderColor: [
-  "#00FFFF",
-  "#ffffff"
-]
-  }
-]
-}
-var donutOptions2     = {
-
-responsive : true,
-rotation: 2/3 * Math.PI,/** This is where you need to work out where 89% is */
-circumference: 5/3 * Math.PI,
-legend: {
-display: false
-},
-cutoutPercentage: 55,
-tooltips: {
-  filter: function(item, data) {
-  var label = data.labels[item.index];
-  if (label) return item;
-}
-}
-}
-//Create pie or douhnut chart
-// You can switch between pie and douhnut using the method below.
-var donutChart2 = new Chart(donutChartCanvas2,
-{
-type: 'doughnut',
-data: donutData2,
-options: donutOptions2
-})
-var areaChartCanvas1 = $('#areaChart1').get(0).getContext('2d')
-
-
-var label=[];
-label=<%-JSON.stringify(label);%>
-
-var chartC=[];
-chartC.push (<%= chartData1[1] %>);
-
-
-var newlabel=[];
-
-for(var i=0;i<3;i++)
-{newlabel[i]=[];
-
- for(var j=0;j<label[i].length;j++)
- {
-
-    newlabel[i][label[i].length-j-1]=label[i][j]
- }
-
-}
-console.log(newlabel[0])
-
-
-var areaChartData1 =
-{
-labels  : newlabel[1], //time data in current chart
-datasets: [
-{
-
-backgroundColor     : 'rgba(60,141,188,0.9)',
-borderColor         : 'rgba(60,141,188,0.8)',
-pointRadius          : true,
-pointColor          : '#3b8bba',
-pointStrokeColor    : 'rgba(60,141,188,1)',
-pointHighlightFill  : '#fff',
-pointHighlightStroke: 'rgba(60,141,188,1)',
-data                : chartC,  //current at particular time
-fill                : false
-},
-
-]
-}
-
-var areaChartOptions1 = {
-maintainAspectRatio : false,
-responsive : true,
-legend: {
-display: false
-},
-scales: {
-xAxes: [{
-gridLines : {
-  display : false,
-},
-ticks: {
-
-min: Math.min.apply(0),
-max: Math.max.apply(100)
-}
-
-}],
-yAxes: [{
-gridLines : {
-  display : false,
-},
-ticks : {
-  beginAtZero: true,
-
-  callback : function(value, index, values) {
-                      return value + ' A';
-              }
-}
-}]
-}
-}
-
-// This will get the first returned node in the jQuery collection.
-var areaChart1       = new Chart(areaChartCanvas1, {
-type: 'line',
-data: areaChartData1,
-options: areaChartOptions1
-})
-var areaChartCanvas2 = $('#areaChart2').get(0).getContext('2d')
-var temp =[];
-temp.push(<%=chartData1[0]%>);
-var areaChartData2 = {
-labels  :newlabel[0], // temperature time axis
-datasets: [
-{
-
-backgroundColor     : 'rgba(60,141,188,0.9)',
-borderColor         : 'rgba(60,141,188,0.8)',
-pointRadius          : true,
-pointColor          : '#FF6347',
-pointStrokeColor    : 'rgba(60,141,188,1)',
-pointHighlightFill  : '#fff',
-pointHighlightStroke: 'rgba(60,141,188,1)',
-data                : temp,  // temperature value at perticular time
-fill                : false
-},
-
-]
-}
-
-console.log(temp);
-
-var areaChartOptions2 = {
-maintainAspectRatio : false,
-responsive : true,
-legend: {
-display: false
-},
-scales: {
-xAxes: [{
-gridLines : {
-  display : false,
-},
-ticks: {
-min: Math.min.apply(0),
-max: Math.max.apply(100)
-}
-
-}],
-yAxes: [{
-gridLines : {
-  display : false,
-},
-ticks : {
-
-
-              beginAtZero: true,
-
-
-  callback : function(value, index, values) {
-                      return value + ' C';
-              }
-}
-}]
-}
-}
-
-// This will get the first returned node in the jQuery collection.
-var areaChart2       = new Chart(areaChartCanvas2, {
-type: 'line',
-data: areaChartData2,
-options: areaChartOptions2
-})
-
-console.log(newlabel[2]);
-var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-var stackedBarChartData =  {
-labels  : newlabel[2],  // temp vs current graph time axis
-datasets: [
-  {
-    label               : 'Avg.current',
-    backgroundColor     : 'rgba(60,141,188,0.9)',
-    borderColor         : 'rgba(60,141,188,0.8)',
-    pointRadius          : false,
-    pointColor          : '#3b8bba',
-    pointStrokeColor    : 'rgba(60,141,188,1)',
-    pointHighlightFill  : '#fff',
-    pointHighlightStroke: 'rgba(60,141,188,1)',
-    data                :<%-JSON.stringify(chartData1[3])%>,   //current bar value blue color
-  },
-  {
-    label               : 'Temperature',
-    backgroundColor     : '#FF0000',
-    borderColor         : 'rgba(210, 214, 222, 1)',
-    pointRadius         : false,
-    pointColor          : 'rgba(210, 214, 222, 1)',
-    pointStrokeColor    : '#c1c7d1',
-    pointHighlightFill  : '#fff',
-    pointHighlightStroke: 'rgba(220,220,220,1)',
-    data                : <%-JSON.stringify(chartData1[2])%>,   // temp current value  red color
-  }
-]
-}
-console.log(<%-JSON.stringify(chartData1[2])%>);
-
-var stackedBarChartOptions = {
-responsive              : true,
-maintainAspectRatio     : false,
-scales: {
-  xAxes: [{
-
-  }],
-  yAxes: [{
-    ticks: {
-              beginAtZero: true
-          }
-  }]
-}
-}
-
-var stackedBarChart = new Chart(stackedBarChartCanvas, {
-type: 'bar',
-data: stackedBarChartData,
-options: stackedBarChartOptions
-})
-})
-
-</script>
- 
-  </body>
 </html>

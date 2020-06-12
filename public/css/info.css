@@ -154,10 +154,26 @@ body {
   text-align: center;
   font-family: "Bree Serif", serif;
 }
+.row1{
+  display: flex;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  justify-content: space-between;
+  padding-left: 6px;
+}
+.date{
+
+display: inline-block;
+}
+.event{
+
+  display: inline-block;
+}
 .area1,
 .area2 {
   height: 250px;
 }
+
 
 .spec-head {
   display: flex;
@@ -240,6 +256,10 @@ html {
 @media only screen and (max-width: 768px) {
   .mainhead {
     font-size: 20px;
+    font-size: 1rem;
+  }
+  .row1{
+    margin-bottom: 1rem;
   }
   .wrapper,
   .charts {
