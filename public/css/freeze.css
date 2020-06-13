@@ -30,12 +30,15 @@ body {
   margin-left: 50px;
 }
 .c1 {
-  height: 140px;
+
   width: auto;
   border-color: darkslateblue;
   background-color: rgb(21, 103, 196);
   box-sizing: border-box;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+.card-body{
+  padding-bottom: 5px;
 }
 .card-title1 {
   margin-left: 10px;
@@ -48,6 +51,7 @@ body {
   margin-left: 10px;
   margin-top: 15px;
   font-size: 130%;
+  margin-bottom: 0px;
   color: aliceblue;
 }
 .body2 {
@@ -99,7 +103,7 @@ body {
   z-index: -1;
   position: relative;
   top: 15%;
-  width: 74%;
+  width: 70%;
   left: 13%;
 }
 .mainhead {
@@ -110,13 +114,12 @@ body {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 0px 50px;
+  padding: 10px 50px;
   overflow: hidden;
   border: black;
-  height: 12%;
   background-color: rgb(32, 85, 131);
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 .setting i {
  margin: auto 0px;
@@ -146,25 +149,35 @@ body {
 
 @media only screen and (max-width: 768px) {
   .mainhead {
-    margin-left: 5px;
-    font-size: 23px;
+    margin: 0rem  1rem;
+    font-size: 1.4rem;
   }
   .card-title1 {
-    font-size: 1.9rem;
+    padding-top: 5px;
+    font-size: 1.74rem;
   }
   .title2 {
     font-size: 1.2rem;
   }
+  .alert{
+   margin-top: 2.2rem;
+   margin-bottom: 1rem;
+  }
 
   .row .fa-snowflake-o {
     font-size: 2.9rem;
+  }
+  .container{
+    margin-top: 1.4rem;
   }
   .body2 {
     margin-left: 20px;
     padding-top: 3.5px;
     font-size: 2.6rem;
   }
-
+.outer-card{
+  margin:30px 10px
+}
   .logo {
     width: 120px;
     height: 35px;

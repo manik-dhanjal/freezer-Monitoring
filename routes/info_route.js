@@ -10,7 +10,7 @@ router.get("/freezeinfo/:id", async (req, res) => {
   var id = req.params.id;
   var freezer;
 
-      let sql4 = "select*from freezer_data";
+      let sql4 = "select*from freezer_data order by freezer_name";
       db.query(sql4, (err, result_data) => {
         if (err) {
           console.log(err);

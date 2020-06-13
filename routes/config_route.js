@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(flash());
 
 router.get("/config", (req, res) => {
-  let sql = "SELECT * FROM freezer_data;";
+  let sql = "SELECT * FROM freezer_data order by freezer_name;";
   db.query(sql, (err, freezertable) => {
     if (err) {
       console.log(err);

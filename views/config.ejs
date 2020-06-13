@@ -81,8 +81,8 @@
       </div>
     </div>
 
-    <div class="jumbotron">
-      <div class="row nav">
+   
+      <div class=" nav">
         <img class="logo" src="/assets/logo.png" />
         <span class="home-set">
           <a href="/"
@@ -94,12 +94,12 @@
           ></a>
         </span>
       </div>
-    </div>
-    <h1 class="mainhead" style="text-align: center; margin: 0px 0px 1rem 0px;">
+   
+    <h1 class="mainhead" >
       Freezer Temperature Monitoring System
     </h1>
     <div class="wrapper">
-      <div class="row">
+      
         <% if(error&&error.length>0){%>
         <div class="alert alert-danger" role="alert">
           <%=error%>
@@ -115,7 +115,7 @@
             <h5
               style="
                 text-align: center;
-                height: 18px;
+                margin-bottom: 10px;
                 font-family: 'Bree Serif', serif;
                 font-size: 27px;
                 color: rgb(83, 13, 148);
@@ -124,12 +124,12 @@
               Config Freezers
             </h5>
 
-            <table style="width: 100%;">
+            <table  style="width: 100%;">
               <tr class="head">
                 <th>Freezer Name</th>
                 <th>Freezer ID</th>
                 <th>Modified Date</th>
-                <th style="width: 20px;">Operations</th>
+                <th style="width: 20px;">Edit</th>
               </tr>
 
               <%freezeData.forEach((freezer)=>{ var time=freezer.update_time%>
@@ -162,15 +162,16 @@
             </table>
           </div>
         </div>
-      </div>
-      <div class="row">
+    <div class="form-sec">
+     <div class="sec1">
         <div class="card c2">
           <div class="card-body">
-            <div class="row">
+            
               <h5
                 style="
-                  margin-left: 32%;
-                  height: 18px;
+                  text-align: center;
+                  display: block;
+                  margin-bottom: 2.5rem;
                   font-family: 'Bree Serif', serif;
                   font-size: 20px;
                   color: rgb(83, 13, 148);
@@ -178,7 +179,7 @@
               >
                 Config Alarms
               </h5>
-            </div>
+           
 
             <!--form start-->
             <form
@@ -250,11 +251,13 @@
         </div>
         <div class="card c3">
           <div class="card-body">
-            <div class="row">
+            
               <h5
                 style="
-                  margin-left: 32%;
-                  height: 18px;
+                 text-align: center;
+                 display: block;
+
+                 margin-bottom: 2rem;
                   font-family: 'Bree Serif', serif;
                   font-size: 20px;
                   color: rgb(83, 13, 148);
@@ -262,7 +265,7 @@
               >
                 Config Email
               </h5>
-            </div>
+         
 
             <form method="post" action="/config/email/add">
               <div class="row">
@@ -289,13 +292,13 @@
                   />
                 </div>
               </div>
-              <div class="row">
+              <div class="row message-box">
                 <label for="recipient-name" class="col-form-label"
                   >Message</label
                 >
                 <textarea
                   type="text"
-                  class="form-control"
+                  class="form-control "
                   id="recipient-name"
                   name="message"
                   required
@@ -303,7 +306,7 @@
               </div>
               <div class="footer">
                 <button
-                  style="margin-top: 10px; margin-left: 80%;"
+                  style="margin-top: 20px; margin-left: auto;"
                   type="submit"
                   class="btn btn-success"
                 >
@@ -313,12 +316,15 @@
             </form>
           </div>
         </div>
+       </div> 
 
-        <div class="row card4" style="margin-left: 10px;">
+
+       
+        <div class="card4" >
           <div class="card c4">
             <div class="card-body">
-              <div class="row">
-                <table style="width: 100%;">
+              
+                <table class="alertTable" >
                   <tr>
                     <th>Freezer Name</th>
                     <th>Alert Temperature</th>
@@ -333,12 +339,15 @@
                   </tr>
                   <%})%>
                 </table>
-              </div>
+             
             </div>
           </div>
         </div>
       </div>
+    </div> 
     </div>
+
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

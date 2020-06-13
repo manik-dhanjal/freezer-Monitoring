@@ -273,7 +273,7 @@ html {
   }
   .head1 {
     margin-bottom: 0px;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .c1 hr {
     margin: 0.7rem auto;
@@ -288,14 +288,14 @@ html {
   }
   .head2 {
     margin-bottom: 0px;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .c2 hr {
     margin: 0.7rem auto;
     width: 80%;
   }
   .val {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .unit1 {
     font-size: 1.1rem;
@@ -318,11 +318,17 @@ html {
     height: auto;
     margin-bottom: 2rem;
   }
+  .c3 .card-body,.c4 .card-body,.c5 .card-body{
+    padding:15px 5px 15px 5px
+  }
   .area2,
   .area1 {
+  
     height: 170px;
   }
-
+#areaChart1, #areaChart2{
+  margin-right: 0px;
+}
   .c6 {
     height: 50vh;
   }
