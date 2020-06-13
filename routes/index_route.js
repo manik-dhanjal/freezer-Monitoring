@@ -9,14 +9,14 @@ var router = express.Router();
 router.use(flash());
 
 router.get("/", (req, res) => {
-  let sql = "select*from freezer_data";
+  let sql = "select*from freezer_data order by freezer_name";
   db.query(sql, (err, result) => {
     if (err) {
       req.flash("error", "Error While Loading freezer Name");
       console.log(err);
     }
     let sql2 =
-      "SELECT * FROM freezer_monitoring.live_records WHERE id IN (SELECT MAX(id) FROM freezer_monitoring.live_records GROUP BY freezer_id) ";
+      "SELECT * FROM freezer_monitoring.live_records WHERE   insert_datetime >= date_sub(now(),interval 5 minute) && id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
     db.query(sql2, (err, liveResult) => {
       if (err) {
         console.log(err);
@@ -53,5 +53,46 @@ router.post("/freezer/add", (req, res) => {
     }
   });
 });
+
+
+
+router.get("/index_freezer",(req,res)=>
+{
+  let freezerArr=[];
+  let sql = "select*from freezer_data order by freezer_name";
+  db.query(sql, (err, result) => 
+  {
+    if (err) 
+    {
+      req.flash("error", "Error While Loading freezer Name");
+      console.log(err);
+      req.redirect("back")
+    }
+    
+    let sql2 = "SELECT * FROM freezer_monitoring.live_records WHERE   insert_datetime >= date_sub(now(),interval 5 minute) && id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
+    db.query(sql2, (err, liveResult) =>
+     {
+       if (err)
+       {
+         console.log(err);
+         req.flash("error", "Error while Loading Live Temperature");
+         req.redirect("back")
+       }
+     
+       for(var i=0 ; i<result.length ; i++) 
+        {
+          freezerArr.push({ name:result[i].freezer_name, id:result[i].freezer_id,temperature:""})
+
+          liveResult.forEach((livedata)=>
+          {   
+             if(result[i].freezer_id==livedata.freezer_id)
+               freezerArr[i].temperature=livedata.temperature 
+          })
+        }
+     
+       res.send(freezerArr);
+     })
+  })
+})
 
 module.exports = router;

@@ -3,10 +3,11 @@ body {
 }
 .jumbotron {
   height: 80px;
-  padding-top: 15px;
+  padding-top: 0px;
   border: black;
   background-color: rgb(32, 85, 131);
 }
+
 .mainhead {
   margin-left: 140px;
   font-size: 45px;
@@ -94,6 +95,37 @@ body {
   margin-right: 10px;
 }
 
+.alert {
+  z-index: -1;
+  position: relative;
+  top: 15%;
+  width: 74%;
+  left: 13%;
+}
+.mainhead {
+  text-align: center;
+  margin-left: 30px;
+  margin-bottom: 1rem;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 50px;
+  overflow: hidden;
+  border: black;
+  height: 12%;
+  background-color: rgb(32, 85, 131);
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.setting i {
+ margin: auto 0px;
+}
+.nav img {
+  margin-left: 0px;
+}
+
+
 @media only screen and (max-width: 1060px) {
   .row-card {
     width: 70%;
@@ -145,33 +177,8 @@ body {
     display: grid;
     grid-template-columns: 1fr;
   }
-}
-.alert {
-  z-index: -1;
-  position: relative;
-  top: 15%;
-  width: 74%;
-  left: 13%;
-}
-.mainhead {
-  text-align: center;
-  margin-left: 30px;
-  margin-bottom: 1rem;
-}
-.logo {
-  margin-top: 10px;
-}
-.nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 50px;
-  overflow: hidden;
-
-  align-items: center;
-}
-.setting {
-  margin-bottom: 10px;
-}
-.nav img {
-  margin-left: 0px;
+  .nav{
+    height: 10%;
+   padding: 0px 20px;
+  }
 }
