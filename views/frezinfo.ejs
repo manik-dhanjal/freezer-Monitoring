@@ -16,16 +16,18 @@
 </head>
 
 <body>
-  <div class="jumbotron">
-    <div class="row nav">
-      <img class="logo" src="/assets/logo.png" />
+ 
+  <div class="jumbo">
+  
+      <img class="logo" src="/assets/logo.png">
+     
+      <h1 class="mainhead">Freezer Temperature Monitoring System</h1>
       <span>
-        <a href="/"><i class="fa fa-2x fa-home hicon" aria-hidden="true"></i></a>
-        <a href="/config"><i class="fa fa-2x fa-cog seticon" aria-hidden="true"></i></a>
-      </span>
-    </div>
-  </div>
-  <h1 class="mainhead">Freezer Temperature Monitoring System</h1>
+      <a href="/"><i class="fa fa-2x fa-home hicon" aria-hidden="true"></i></a> 
+     <a href="/config"><i class="fa fa-2x fa-cog seticon" aria-hidden="true"></i></a> 
+    </span>
+</div>
+ 
   <div class="wrapper1">
     <% if(error&&error.length>0){%>
     <div class="alert alert-danger" role="alert">
@@ -33,53 +35,48 @@
     </div>
     <% }%>
 
-    <div class="dropdown frezer-select">
-      <button class="btn btn-secondary dropdown-toggle frebt" type="button" id="dropdownMenuButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-freezerid=<%=currentFreezer.freezer_id%>>
-      <%=currentFreezer.freezer_name%>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <%allFreezer.forEach((dropFreezer)=>{%>
-        <a class="dropdown-item"
-          href="/freezeinfo/<%=dropFreezer.freezer_id%>"><%=dropFreezer.freezer_name%></a>
-        <%})%>
+    <div class="row0" style="padding-top: 0px;">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle frebt dropButton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  data-freezerid="<%=currentFreezer.freezer_id%>" >
+          <%=currentFreezer.freezer_name%>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%allFreezer.forEach((dropFreezer)=>{%>
+            <a class="dropdown-item"
+            href="/freezeinfo/<%=dropFreezer.freezer_id%>"><%=dropFreezer.freezer_name%></a>
+          <%})%>
+        </div>
       </div>
     </div>
 
-    <div class="charts">
-      <div class="meter">
-        <div class="card c1">
+    <div class="row1">
+         <div class="meter"> 
+      <div class="card c1">
           <div class="card-body">
-            <h4 class="head1">Temperature</h4>
-            <hr />
-            <canvas id="donutChart1"></canvas>
-            <h3 class="val douTemp">
-
-            </h3>
+                  <h4 class="head1">Temperature</h4>
+              <hr>
+              <canvas id="donutChart1"></canvas>
+              <h3 class="val douTemp" ></h3>
           </div>
-        </div>
-
-        <div class="card c2">
-          <div class="card-body">
-            <h4 class="head2"> Current</h4>
-
-            <hr />
-            <canvas id="donutChart2"></canvas>
-            <h3 class="val douCurrent">
-
-            </h3>
-          </div>
-        </div>
       </div>
 
-      <section class="sec2">
-        <div class="sep-temp-cur">
-          <div class="card c3">
-            <div class="card-body">
+      <div class="card c2">
+        <div class="card-body">
+                <h4 class="head2">Current</h4>
+            <hr>
+            <canvas id="donutChart2"></canvas>
+            <h3 class="val douCurrent"></h3>
+        </div>
+    </div>
+    </div>   
+    <div class="card c3">
+      <div class="card-body">
+          <div class="c3-head">
+            
               <h4 class="head3">Current Consumption</h4>
-              <div class="dropdown">
+              <div class="dropdown" >
                 <button class="btn btn-sm btn-secondary dropdown-toggle time current" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      10 min
+                  10min
                 </button>
                 <div class="dropdown-menu current_drop" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" style="color: black;" data-time="10"    data-type="current"> 10 min </a>
@@ -88,78 +85,93 @@
                   <a class="dropdown-item" style="color: black;" data-time="360"   data-type="current"> 6 hr </a>
                   <a class="dropdown-item" style="color: black;" data-time="1440"  data-type="current"> 24 hr </a>
                 </div>
-             </div>
-             <hr>
-             <div class="area1">
-              <canvas id="areaChart1"></canvas>
-             </div>
-           </div>
-         </div>
-
-        <div class="card c4">
-          <div class="card-body">
-            <h4 class="head4">Temperature Trend</h4>
-            <div class="dropdown">
-              <button class="btn btn-sm btn-secondary dropdown-toggle time temperature" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                10 min
-              </button>
-                  <div class="dropdown-menu temp_drop" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" style="color: black;" data-time="10"    data-type="temperature">10 min</a>
-                    <a class="dropdown-item" style="color: black;" data-time="30"    data-type="temperature">30 min</a>
-                    <a class="dropdown-item" style="color: black;" data-time="60"    data-type="temperature">1 hr</a>
-                    <a class="dropdown-item" style="color: black;" data-time="360"   data-type="temperature">6 hr</a>
-                    <a class="dropdown-item" style="color: black;" data-time="1440"  data-type="temperature">24 hr</a>
-                  </div>
-             </div>
-          <hr>
-          <div class="area2">
-            <canvas id="areaChart2"></canvas>
+              
+              </div>
           </div>
-        </div>
-    </div>
+          <hr>
+   <div class="area1">
+       <canvas id="areaChart1"></canvas>
+      </div>
+      </div>
   </div>
 
   <div class="card c6">
     <div class="card-body">
       <h4 class="head6">Alert</h4>
-      <hr />
-      <span class="spec-head">
+      <hr>
+      <div class="alert-head">
         <h6 class="head7">Date</h6>
         <h6 class="head8">Events</h6>
-      </span>
-      <hr />
+      </div>
+      <hr>
       <div class="alert_list">
-
+  
       </div>
     </div>
   </div>
-  </section>
+  </div>
 
-  <div class="card c5">
-    <div class="card-body">
-      <h4 class="head5">Avg.Temperature vs Current</h4>
-      <div class="dropdown">
-          <button class="btn btn-sm btn-secondary dropdown-toggle time temp-cur" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              10 min 
-          </button>
-              <div class="dropdown-menu tempVScur_drop" aria-labelledby="dropdownMenuButton ">
-                <a class="dropdown-item" style="color: black;"  data-time="10"      data-type="temp-cur" >10 min</a>
-                <a class="dropdown-item" style="color: black;"  data-time="30"      data-type="temp-cur">30 min</a>
-                <a class="dropdown-item" style="color: black;"  data-time="60"      data-type="temp-cur">1 hr</a>
-                <a class="dropdown-item" style="color: black;"  data-time="360"     data-type="temp-cur">6 hr</a>
-                <a class="dropdown-item" style="color: black;"  data-time="1440"    data-type="temp-cur">24 hr</a>
-              </div>
-       </div>
-    <hr>
-    <div class="area3">
-      <canvas id="stackedBarChart"></canvas>
+
+
+
+
+  <div class="row2">
+    <div class="card c4">
+        <div class="card-body">
+            <div class="c4-head">
+                <h4 class="head4">Temperature Trend</h4>
+                <div class="dropdown" >
+                  <button class="btn btn-sm btn-secondary dropdown-toggle time temperature" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  10 min
+                </button>
+                    <div class="dropdown-menu temp_drop" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" style="color: black;" data-time="10"    data-type="temperature">10 min</a>
+                      <a class="dropdown-item" style="color: black;" data-time="30"    data-type="temperature">30 min</a>
+                      <a class="dropdown-item" style="color: black;" data-time="60"    data-type="temperature">1 hr</a>
+                      <a class="dropdown-item" style="color: black;" data-time="360"   data-type="temperature">6 hr</a>
+                      <a class="dropdown-item" style="color: black;" data-time="1440"  data-type="temperature">24 hr</a>
+                    </div>
+                </div>
+             </div>
+            <hr>
+            <div class="area2">
+              <canvas id="areaChart2"></canvas>
+            </div>
+        </div>
+      </div>
+
+       
+ 
+
+    
+      <div class="card c5">
+        <div class="card-body">
+            <div class="c5-head">
+                <h4 class="head5">Avg.Temperature vs Current</h4>
+                <div class="dropdown" >
+                  <button class="btn btn-sm btn-secondary dropdown-toggle time temp-cur" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    10 min 
+                </button>
+                    <div class="dropdown-menu tempVScur_drop" aria-labelledby="dropdownMenuButton ">
+                      <a class="dropdown-item" style="color: black;"  data-time="10"      data-type="temp-cur" >10 min</a>
+                      <a class="dropdown-item" style="color: black;"  data-time="30"      data-type="temp-cur">30 min</a>
+                      <a class="dropdown-item" style="color: black;"  data-time="60"      data-type="temp-cur">1 hr</a>
+                      <a class="dropdown-item" style="color: black;"  data-time="360"     data-type="temp-cur">6 hr</a>
+                      <a class="dropdown-item" style="color: black;"  data-time="1440"    data-type="temp-cur">24 hr</a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="area3">
+                <canvas id="stackedBarChart" ></canvas>
+            </div>
+        </div>
     </div>
   </div>
+      </div>
   </div>
-  </div>
-  </div>
-
+</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -393,7 +393,7 @@ async function liveFreezerTC(id)
             }
 
             alertHTML = alertHTML + 
-              `<div class="row1">
+              `<div class="list-item">
                  <div class="date">  ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()} at ${time} hrs</div>
                  <div class="event">${alert[i].message}</div>
                </div>`;

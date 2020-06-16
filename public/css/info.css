@@ -1,395 +1,330 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
-body {
+body{
   background-color: rgb(199, 216, 230);
 }
-.unit1 {
-  font-size: 1.6rem;
-  font-weight: 400;
-  padding-left: 6px;
-}
-.frezer-select {
-  width: 100%;
-  margin-top: 2rem;
-  padding-left: 5%;
-}
-.frezer-select button {
-  margin: 0px;
-}
-.jumbotron {
-  height: 80px;
-  padding-top: 0px;
-  border: black;
-  width: 100%;
-  background-color: rgb(32, 85, 131);
-}
-.mainhead {
-  font-size: 45px;
-  color: black;
-  font-family: "Piedra", cursive;
-  text-align: center;
-}
-.alert {
-  position: relative;
-  z-index: 10;
-  margin-top: 1rem;
-  width: 80%;
-
-  left: 10%;
-}
-
-.wrapper1 .charts {
-  padding-top: 10px;
+.row{
   width: 100%;
 }
-.meter {
-  width: 90%;
-}
-.c1 {
-  margin-top: 10px;
-  width: 36%;
-  height: auto;
-  border-radius: 5%;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
-}
-.c1 .card-body {
-  height: auto;
-}
-.head1 {
-  display: block;
-  text-align: center;
-  font-family: "Bree Serif", serif;
-}
-#donutChart1 {
-  max-width: 100%;
-}
-.val {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-.c2 {
-  margin-top: 10px;
-  width: 36%;
-  height: auto;
-  border-radius: 5%;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
-}
-#donutChart2 {
-  max-width: 100%;
-}
-.head2 {
-  display: block;
-  text-align: center;
-  font-family: "Bree Serif", serif;
-}
-#donutChart2 {
-  max-width: 100%;
-}
-
-.sec2 {
-  width: 90%;
-  margin: 5% auto;
+.jumbo{
+  height: 8%;
+  padding: 0px 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  border: black;
+  background-color:  rgb(32, 85, 131);
 }
-.sep-temp-cur {
-  flex: 2;
-  margin-right: 4rem;
+.jumbo span{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.c3 {
-  width: 100%;
-  height: auto;
+.logo{
+  height: 90%;
+}
+.mainhead{
+ margin:0px;
+  font-size: 2rem;
+  color: black;
+  font-family: 'Piedra', cursive;
+}
+.dropButton{
+position: relative;
+top:10%;
+right: -80%;
+margin-top: 0.5rem;
+}
+.row1{
+  width: 98%;
+
+  margin: 0px auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.meter{
+  width: 32%;
+  display: flex;
+}
+.c1{
+
+ width: 49%;
+ height: auto;
   border-radius: 5%;
   box-sizing: border-box;
-  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
 }
-.head3 {
-  display: block;
-  text-align: center;
-  font-family: "Bree Serif", serif;
+.head1,.head2,.head3,.head6{
+display: block;
+text-align: center;
+font-size: 1.2rem;
+  font-family: 'Bree Serif', serif;
 }
-
-#areaChart1 {
-  margin-top: 1rem;
-  height: 250px;
-  max-width: 95%;
-}
-
-.c4 {
+#donutChart1{
   width: 100%;
-  height: auto;
-  margin-top: 3rem;
+ transform: scale(1.35,1.35);
+margin-top: 10px;
+}
+.val
+{
+display: block;
+text-align: center;
+font-size: 1.3rem;
+margin-top: 1rem;
+}
+.c1 .card-body,.c2 .card-body,.c3 .card-body{
+  padding: 0px;
+  padding-top: 0.6rem;
+}
+.c6 .card-body{
+  padding: 0.6rem 15px 0.6rem 10px;
+}
+
+.c2{
+width: 49%;
+height: auto;
+  margin-left: 20px;
   border-radius: 5%;
   box-sizing: border-box;
-  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
 }
-.head4 {
-  display: block;
-  text-align: center;
-  font-family: "Bree Serif", serif;
+#donutChart2{
+ width: 100%;
+ transform: scale(1.35,1.35);
+margin-top: 10px;
 }
-#areaChart2 {
-  margin-top: 1rem;
-  height: 250px;
-  max-width: 95%;
+.c2 hr,.c1 hr{
+  margin:5px 10px 15% 10px
+}
+.c3 hr,.c5 hr,.c4 hr{
+  margin: 7px 1rem;
 }
 
-.c6 {
-  height: 825px;
-  width: 36%;
+
+.c3{
+  width: 35%;
+  margin-left: 20px;
+  border-radius: 5%;
+  box-sizing: border-box;
+box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+
+
+.area1,.area2{
+  width: 100%;
+  height: 80%;
+}
+
+.row2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+  margin: 1rem auto;
+  margin-bottom: 10px;
+}
+.c4{
+ width: 49%;
+  border-radius: 5%;
+  box-sizing: border-box;
+box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+.c3-head,.c4-head,.c5-head {
+  display: flex;
+ justify-content: space-around;
+}
+.time{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.head3{
+  margin-left: 22%;
+}
+.head4{
+  margin-left: 22%;
+  font-size: 1.3rem;
+  font-family: 'Bree Serif', serif;
+}
+#areaChart2{
+  height:190px; max-width: 95%;
+}
+.c4 .card-body,.c5 .card-body{
+  padding: 0.6rem ;
+}
+.c5{
+width: 49%;
+  border-radius: 5%;
+  box-sizing: border-box;
+box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
+}
+#stackedBarChart{
+  height:206px; max-width: 95%;
+}
+.head5{
+  margin-left:22%;
+  margin-bottom: 0px;
+  font-size: 1.2rem;
+  font-family: 'Bree Serif', serif;
+}
+.c6{
+width: 28%;
+ 
+  margin-left: 20px;
   border-radius: 5%;
   box-sizing: border-box;
   box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
   overflow-y: scroll;
 }
-.head6 {
-  display: block;
-  text-align: center;
-  font-family: "Bree Serif", serif;
-}
-.row1{
+
+.alert-head{
   display: flex;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
   justify-content: space-between;
-  padding-left: 6px;
-}
-.date{
-
-display: inline-block;
-}
-.event{
-
-  display: inline-block;
-}
-.area1,
-.area2 {
-  height: 250px;
-}
-
-
-.spec-head {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0px 2rem;
+  padding: 0px 20px;
 }
-.head7 {
-  display: inline;
-  font-family: "Bree Serif", serif;
-}
-.head8 {
-  display: inline;
-  font-family: "Bree Serif", serif;
-}
-.c5 {
-  margin-top: 22px;
-  width: 90%;
-  height: auto;
-  margin: 3rem auto;
-  border-radius: 5%;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 3px 3px rgba(14, 65, 161, 0.5);
-}
-
-#stackedBarChart {
-  height: 225;
-  max-width: 95%;
-}
-.head5 {
-  display: block;
+.head6,.head7{
   margin: 0px;
-  text-align: center;
-  font-family: "Bree Serif", serif;
+}
+.c6 hr{
+  margin: 0px;
+}
+.list-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  font-size: 0.8rem;
+  margin: 0.5rem 0px;
 }
 
-.area3 {
-  height: 400px;
-}
-.eve {
+.eve{
   margin-left: 60px;
 }
-.dat {
+.dat{
   margin-left: 10px;
 }
-.frebt {
+.frebt{
   margin-left: 40px;
 }
-.time {
-  margin-right: 20px;
-  z-index: 2;
-  height: 30px;
-  margin-left: 40px;
+.time{
+ z-index: 2;height: 30px;margin-left: 40px;
 }
-.logo {
-  width: 220px;
-  height: 55px;
-}
-.hicon {
+
+.hicon{
   color: black;
 }
-.seticon {
-  margin-top: 10px;
+.seticon{
+
   margin-left: 30px;
   color: black;
 }
-.meter {
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  padding: 2rem 0px;
-  margin: 0px auto;
-}
+@media only screen and (max-width:830px){
 
-body,
-html {
-  width: 100%;
-  height: 100%;
-}
-@media only screen and (max-width: 768px) {
-  .mainhead {
-    font-size: 20px;
-    font-size: 1rem;
+  .mainhead{
+      font-size:1.1rem;
+      display: none;
   }
-  .row1{
-    margin-bottom: 1rem;
+  .jumbo{
+    padding: 10px;
   }
-  .wrapper,
-  .charts {
-    width: 100%;
-  }
-  .frezer-select button,
-  .frezer-select .dropdown-item {
-    font-size: 0.9rem;
-  }
-  .meter .card {
-    width: 38%;
-  }
-  .head1 {
-    margin-bottom: 0px;
-    font-size: 1rem;
-  }
-  .c1 hr {
-    margin: 0.7rem auto;
-    width: 80%;
-  }
-  .c1 .card-body {
-    padding: 15px 5px 0px 5px;
-  }
-
-  .c2 .card-body {
-    padding: 15px 5px 0px 5px;
-  }
-  .head2 {
-    margin-bottom: 0px;
-    font-size: 1rem;
-  }
-  .c2 hr {
-    margin: 0.7rem auto;
-    width: 80%;
-  }
-  .val {
-    font-size: 1rem;
-  }
-  .unit1 {
-    font-size: 1.1rem;
-    padding-left: 3px;
-  }
-
-  .sec2 {
-    flex-direction: column;
-  }
-  .sep-temp-cur {
-    margin: 0px;
-    width: 100%;
-  }
-  .c3 {
-    width: 100%;
-    height: auto;
-  }
-  .c4 {
-    width: 100%;
-    height: auto;
-    margin-bottom: 2rem;
-  }
-  .c3 .card-body,.c4 .card-body,.c5 .card-body{
-    padding:15px 5px 15px 5px
-  }
-  .area2,
-  .area1 {
-  
-    height: 170px;
-  }
-#areaChart1, #areaChart2{
-  margin-right: 0px;
-}
-  .c6 {
-    height: 50vh;
-  }
-  .time {
-    height: 30px;
-    margin-left: 20px;
-  }
-
-  .c6 {
-    width: 100%;
-  }
-
-  .dat {
-    margin-left: 60px;
-  }
-  .eve {
-    margin-left: 140px;
-  }
-
-  .c5 {
-    margin-top: 1.2rem;
-    width: 90%;
-  }
-  .head5 {
-    margin-bottom: 1rem;
+ a .hicon,a .seticon{
     font-size: 1.6rem;
   }
-  .area3 {
-    height: 250px;
-  }
-  .logo {
-    width: 120px;
-    height: 35px;
-    margin-left: 12px;
-  }
-  .charts {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-}
 
-.hicon {
-  margin: 0px;
-  margin-bottom: 10px;
-}
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px;
-  padding-top: 15px;
-}
-.jumbotron {
-  padding-bottom: 0px;
-}
-.mainhead {
-  text-align: center;
-}
-.nav span {
-  display: static;
-  margin-right: 20px;
+  .logo{
+    height: 80%;
+  }
+ .row1 .meter{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+ margin-bottom: 1rem;
+  }
+  .current{
+    margin: 0px;
+    transform: scale(0.9,0.9);
+  }
+  #donutChart2,#donutChart1{
+    transform: scale(1,1);
+    width: 100%;
+    margin: 0px;
+
+  }
+
+ .row1{
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: stretch;
+   width: 90%;
+ }
+
+ .head1,.head2,.card-body h4{
+   margin: 0px;
+   font-size: 1rem;
+margin-right: 0px;
+width: 100%;
+ }
+h3,.val{
+   margin: 10px 0px;
+   font-size: 0.9rem;
+ }
+ 
+
+ .c3{
+   width: 100%;
+   margin: 0px;
+ }
+ .c6{
+   width:100%;
+   margin: 0px;
+   height: 300px;
+   margin-top: 1rem;
+ }
+  
+ .dropButton{
+  position: relative;
+  top:10%;
+  right: -38%;
+  transform: scale(0.8,0.8);
+  margin-top: 0.5rem;
+  }
+  .row2{
+    flex-direction: column;
+    width: 90%;
+    margin: 0px auto;
+  }
+  .c4,.c5{
+    width: 100%;
+    margin: 0px;
+  }
+  .c5{
+    margin: 1rem 0px;
+  }
+ .c5 .head5{
+    font-size: 0.9rem;
+ padding: 5px 0px;
+ padding-left: 5%;
+ text-align: center;
+  }
+  .head4,.head3{
+    font-size: 0.9rem;
+    padding: 5px 0px;
+    padding-left: 15%;
+    text-align: center;
+  }
+
+  .temp-cur{
+    margin: 0px;
+  }
+  .card-body .dropdown{
+transform: scale(0.8,0.8);
+
+  }
+  .temperature{
+    margin: 0px;
+  }
+ .card-body .head6{
+    margin-bottom: 0.7rem;
+  }
+
 }

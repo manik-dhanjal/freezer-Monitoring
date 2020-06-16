@@ -21,7 +21,7 @@ router.get("/freezeinfo/:id", async (req, res) => {
           if(body.freezer_id==id) freezer=body
           })
 
-       
+     
           res.render("frezinfo.ejs", {
             allFreezer: result_data,
             currentFreezer:freezer,

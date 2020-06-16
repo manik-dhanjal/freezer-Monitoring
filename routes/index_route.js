@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
       console.log(err);
     }
     let sql2 =
-      "SELECT * FROM freezer_monitoring.live_records WHERE   insert_datetime >= date_sub(now(),interval 5 minute) && id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
+      "SELECT * FROM freezer_monitoring.live_records WHERE    id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
     db.query(sql2, (err, liveResult) => {
       if (err) {
         console.log(err);
@@ -69,7 +69,7 @@ router.get("/index_freezer",(req,res)=>
       req.redirect("back")
     }
     
-    let sql2 = "SELECT * FROM freezer_monitoring.live_records WHERE   insert_datetime >= date_sub(now(),interval 5 minute) && id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
+    let sql2 = "SELECT * FROM freezer_monitoring.live_records WHERE   id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
     db.query(sql2, (err, liveResult) =>
      {
        if (err)
