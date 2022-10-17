@@ -2,7 +2,7 @@ var express = require("express"),
   mysql = require("mysql"),
   bodyParser = require("body-parser"),
   moment = require("moment"),
-  db = require("../db"),
+  db = require("../config/db"),
   flash = require("connect-flash"),
   bodyParser = require("body-parser");
 

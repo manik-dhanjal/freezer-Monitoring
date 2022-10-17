@@ -1,7 +1,7 @@
 var express = require("express"),
   mysql = require("mysql"),
   moment = require("moment");
-db = require("../db");
+db = require("../config/db");
 
 var router = express.Router();
 
