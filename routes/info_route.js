@@ -33,9 +33,6 @@ router.get("/freezeinfo/:id", async (req, res) => {
 
 });
 
-
-
-
 router.get("/live_freezer_tc/:id", (req, res) => {
   let id = req.params.id;
 
@@ -49,7 +46,7 @@ router.get("/live_freezer_tc/:id", (req, res) => {
       );
     }
 
-    let sql2 = `select *from freezer_monitoring.alert_info where freezer_id='${id}' &&  update_time >= date_sub(now(),interval  48 hour)  `;
+    let sql2 = `select * from freezer_monitoring.alert_info where freezer_id="${id}" &&  update_time >= date_sub(now(),interval  48 hour);`;
     db.query(sql2, (err, alert) => {
       if (err) {
         console.log(err);
@@ -152,6 +149,7 @@ router.get("/live_chart/:type/:id/:time", (req, res) =>
  
     });
 });
+
 
 
 

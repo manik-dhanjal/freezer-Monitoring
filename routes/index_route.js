@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
       console.log(err);
     }
     let sql2 =
-      "SELECT * FROM freezer_monitoring.live_records WHERE    id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
+      "SELECT * FROM freezer_monitoring.live_records WHERE id in (SELECT MAX(id) FROM freezer_monitoring.live_records  GROUP BY freezer_id); ";
     db.query(sql2, (err, liveResult) => {
       if (err) {
         console.log(err);
@@ -53,8 +53,6 @@ router.post("/freezer/add", (req, res) => {
     }
   });
 });
-
-
 
 router.get("/index_freezer",(req,res)=>
 {
